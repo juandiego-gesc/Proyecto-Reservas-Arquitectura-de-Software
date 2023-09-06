@@ -12,7 +12,7 @@ public class Employee {
 
     @Id
     @Column
-    private int employee_id;
+    private Long employee_id;
 
     @Column
     private String job;
@@ -20,13 +20,7 @@ public class Employee {
     @Column
     private int  hourly_rate;
 
-    @OneToOne(mappedBy = "employee")
+    @OneToOne(mappedBy = "employee") // Forma 1
     private User user;
-
-
-
-
-
-
 
 }
