@@ -25,7 +25,8 @@ public class User {
     @Column
     private int  phone_number;
 
-    // Todo: Al parecer existen dos formas de hacer la relación 1 a 1, verificar cual es la mejor
+    // Todo: Al parecer existen dos formas de hacer la relación 1 a 1,
+    //  verificar cual es la mejor
 
     @OneToOne(cascade = CascadeType.ALL) // Forma 1
     @JoinColumn(name = "employee_id")

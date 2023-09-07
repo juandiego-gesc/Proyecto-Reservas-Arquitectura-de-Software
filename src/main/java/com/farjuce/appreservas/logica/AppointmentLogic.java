@@ -14,14 +14,14 @@ public class AppointmentLogic {
         this.appointmentRepository = appointmentRepository;
     }
 
-    // Todo: Implement this class
+    // Todo: Finish this
 
     public void createAppointment(AppointmentDTO appointmentDTO) {
         Appointment appointment = new Appointment();
-        appointment.setDate(appointmentDTO.getAppointmentDate());
-        appointment.setEmployee(appointmentDTO.getEmployee());
-        appointment.setService(appointmentDTO.getService());
-        appointment.setUser(appointmentDTO.getUser());
+        appointment.setAppointmentId(appointmentDTO.getAppointmentId());
+        appointment.setDate(appointmentDTO.getDate());
+        appointment.setStartTime(appointmentDTO.setStatus(););
+
         appointmentRepository.save(appointment);
     }
 }
