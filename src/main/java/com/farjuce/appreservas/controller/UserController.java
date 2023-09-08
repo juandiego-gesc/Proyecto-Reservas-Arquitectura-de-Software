@@ -3,6 +3,7 @@ package com.farjuce.appreservas.controller;
 import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.bd.user.User;
 import com.farjuce.appreservas.bd.user.UserRepository;
+import com.farjuce.appreservas.controller.dto.UserDTO;
 import com.farjuce.appreservas.logica.UserLogic;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,5 +24,11 @@ public class UserController {
     @GetMapping(path = "/users/getAll")
     public List<User> getAllUsers() {
         return logic.getAllUsers();
+    }
+
+    @PostMapping(path = "/user/add")
+    public boolean saveUser(@RequestBody UserDTO userDTO){
+        logic.addUser(userDTO);
+        return true;
     }
 }

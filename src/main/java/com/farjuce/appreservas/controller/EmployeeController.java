@@ -21,7 +21,7 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/employees/getAll")
-    public List<Employee> obtenerEmployees() {
+    public List<Employee> getAllEmployeesEmployees() {
         return logic.getAllEmployees();
     }
 

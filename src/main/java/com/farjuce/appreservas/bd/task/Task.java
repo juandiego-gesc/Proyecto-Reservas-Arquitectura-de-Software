@@ -1,18 +1,16 @@
-package com.farjuce.appreservas.bd.service;
+package com.farjuce.appreservas.bd.task;
 
-import com.farjuce.appreservas.bd.customer.Customer;
-import com.farjuce.appreservas.bd.employee.Employee;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "service")
+@Table(name = "task")
 @Data
-public class Service {
+public class Task {
 
     @Id
-    private Long Service_id;
+    private Long taskId;
 
     @Column
     private String name;

@@ -12,16 +12,16 @@ import javax.persistence.*;
 public class Appointment {
 
     @Id
-    private Long appointment_id;
+    private Long appointmentId;
 
     @Column
     private String date;
 
     @Column
-    private String start_time;
+    private String startTime;
 
     @Column
-    private String end_time;
+    private String endTime;
 
     @Column
     private String status;

@@ -9,9 +9,9 @@ import javax.persistence.*;
 @Table(name = "customer")
 @Data
 public class Customer {
+
     @Id
     private Long customer_id;
-
 
     @OneToOne
     @JoinColumn(name = "customer_id") // Forma 2
