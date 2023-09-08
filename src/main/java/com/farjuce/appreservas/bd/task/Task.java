@@ -12,7 +12,10 @@ import java.util.Set;
 @Data
 public class Task {
 
+    // Auto generate ID
+
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long task_id;
 
     @Column
@@ -22,10 +25,10 @@ public class Task {
     private String description;
 
     @Column
-    private String duration;
+    private int duration;
 
     @Column
-    private String price;
+    private int price;
 
     /*@ManyToMany(mappedBy = "task")
     private Set<Employee> employees;*/

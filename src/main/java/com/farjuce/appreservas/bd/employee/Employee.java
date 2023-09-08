@@ -13,7 +13,6 @@ import java.util.Set;
 public class Employee {
 
     @Id
-    @Column
     private Long employee_id;
 
     @Column

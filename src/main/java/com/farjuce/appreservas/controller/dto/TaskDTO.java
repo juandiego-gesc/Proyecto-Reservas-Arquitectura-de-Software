@@ -5,14 +5,12 @@ import lombok.Data;
 @Data
 public class TaskDTO {
 
-    private Long taskId;
-
     private String name;
 
     private String description;
 
-    private String duration;
+    private int duration;
 
-    private String price;
+    private int price;
 
 }
