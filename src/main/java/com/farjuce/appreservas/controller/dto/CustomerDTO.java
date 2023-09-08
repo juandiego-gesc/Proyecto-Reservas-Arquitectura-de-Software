@@ -4,7 +4,7 @@ package com.farjuce.appreservas.controller.dto;
 import lombok.Data;
 
 @Data
-public class UserDTO {
+public class CustomerDTO {
 
     private Long user_id;
 
