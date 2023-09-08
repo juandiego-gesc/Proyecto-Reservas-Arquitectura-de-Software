@@ -1,5 +1,6 @@
 package com.farjuce.appreservas.bd.employee;
 
+import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.task.Task;
 import lombok.Data;
 
@@ -21,12 +22,15 @@ public class Employee {
     @Column
     private int  hourly_rate;
 
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(
         name = "employee_task",
         joinColumns = @JoinColumn(name = "employee_id"),
         inverseJoinColumns = @JoinColumn(name = "task_id")
     )
-    private Set<Task> services;
+    private Set<Task> services;*/
+
+    @OneToMany (mappedBy= "employee")
+    private Set<Appointment> appointments;
 
 }

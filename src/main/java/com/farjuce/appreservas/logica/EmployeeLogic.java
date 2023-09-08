@@ -21,8 +21,7 @@ public class EmployeeLogic {
     public void addEmployee(EmployeeDTO employeeDTO){
         Employee employee = new Employee();
         employee.setEmployee_id(employeeDTO.getEmployee_id());
-        employee.setJob(employeeDTO.getJob());
-        employee.setHourly_rate(employeeDTO.getHourly_rate());
+        employee.setJob(employeeDTO.getName());
     }
 
     public List<Employee> getAllEmployees(){

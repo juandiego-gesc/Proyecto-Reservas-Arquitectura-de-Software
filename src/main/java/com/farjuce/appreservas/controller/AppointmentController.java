@@ -2,28 +2,35 @@ package com.farjuce.appreservas.controller;
 
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import com.farjuce.appreservas.logica.AppointmentLogic;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AppointmentController {
 
-    private AppointmentLogic logic;
+    private AppointmentLogic logicAppointment;
 
-    public AppointmentController(AppointmentLogic logic) {
-        this.logic = logic;
+    public AppointmentController(AppointmentLogic logicAppointment) {
+        this.logicAppointment = logicAppointment;
     }
 
-    // Todo: Implement this class
 
-    @PostMapping("/appointment/create")
-    public void createAppointment(AppointmentDTO appointmentDTO) {
-//        logic.create();
+    @PostMapping(path = "/appointment/create")
+    public void createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+        logicAppointment.createAppointment(appointmentDTO);
     }
 
-    @PostMapping("/appointment/update")
+    @PostMapping(path = "/appointment/update")
     public void updateAppointment(AppointmentDTO appointmentDTO) {
-//        logic.update();
+
+    }
+
+    @DeleteMapping(path = "/appointment/delete")
+    public void deleteAppointment (AppointmentDTO appointmentDTO){
+
     }
 
 }

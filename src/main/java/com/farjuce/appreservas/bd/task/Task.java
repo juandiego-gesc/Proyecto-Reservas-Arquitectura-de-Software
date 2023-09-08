@@ -1,5 +1,6 @@
 package com.farjuce.appreservas.bd.task;
 
+import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.employee.Employee;
 import lombok.Data;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 public class Task {
 
     @Id
-    private Long taskId;
+    private Long task_id;
 
     @Column
     private String name;
@@ -26,9 +27,11 @@ public class Task {
     @Column
     private String price;
 
-    @ManyToMany(mappedBy = "task")
-    private Set<Employee> employees;
+    /*@ManyToMany(mappedBy = "task")
+    private Set<Employee> employees;*/
 
+    @OneToMany (mappedBy= "task")
+    private Set<Appointment> appointments;
 }
 
 
