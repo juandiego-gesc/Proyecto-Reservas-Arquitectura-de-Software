@@ -26,7 +26,7 @@ public class Task {
     @Column
     private String price;
 
-    @ManyToMany(mappedBy = "services")
+    @ManyToMany(mappedBy = "task")
     private Set<Employee> employees;
 
 }
