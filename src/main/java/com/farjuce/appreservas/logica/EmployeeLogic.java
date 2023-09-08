@@ -21,7 +21,8 @@ public class EmployeeLogic {
     public void addEmployee(EmployeeDTO employeeDTO){
         Employee employee = new Employee();
         employee.setEmployee_id(employeeDTO.getEmployee_id());
-        employee.setJob(employeeDTO.getName());
+        employee.setName(employeeDTO.getName());
+        employeeRepository.save(employee);
     }
 
     public List<Employee> getAllEmployees(){

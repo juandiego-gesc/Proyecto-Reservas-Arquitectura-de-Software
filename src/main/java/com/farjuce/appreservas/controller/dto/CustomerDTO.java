@@ -9,6 +9,6 @@ public class CustomerDTO {
     private Long customer_id;
     private String name;
     private String email;
-    private int  phone_number;
+    private Long phone_number;
 
 }

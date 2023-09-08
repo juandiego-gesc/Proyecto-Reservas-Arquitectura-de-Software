@@ -17,10 +17,7 @@ public class Employee {
     private Long employee_id;
 
     @Column
-    private String job;
-
-    @Column
-    private int  hourly_rate;
+    private String name;
 
     /*@ManyToMany
     @JoinTable(

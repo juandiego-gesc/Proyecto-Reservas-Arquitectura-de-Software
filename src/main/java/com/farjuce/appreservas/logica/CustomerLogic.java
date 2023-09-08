@@ -8,8 +8,8 @@ import com.farjuce.appreservas.controller.dto.CustomerDTO;
 
 @Service
 public class CustomerLogic {
-    
-   private CustomerRepository customerRepository;
+
+    private CustomerRepository customerRepository;
 
     public CustomerLogic(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
@@ -17,7 +17,12 @@ public class CustomerLogic {
 
     public void createCustomer(CustomerDTO customerDTO) {
 
-        Customer customer = new Customer();
+        Customer customer = Customer.builder()
+                .customer_id(customerDTO.getCustomer_id())
+                .name(customerDTO.getName())
+                .email(customerDTO.getEmail())
+                .phone_number(customerDTO.getPhone_number())
+                .build();
         customerRepository.save(customer);
     }
 }
