@@ -1,8 +1,10 @@
 package com.farjuce.appreservas.bd.task;
 
+import com.farjuce.appreservas.bd.employee.Employee;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "task")
@@ -23,6 +25,10 @@ public class Task {
 
     @Column
     private String price;
+
+    @ManyToMany(mappedBy = "services")
+    private Set<Employee> employees;
+
 }
 
 

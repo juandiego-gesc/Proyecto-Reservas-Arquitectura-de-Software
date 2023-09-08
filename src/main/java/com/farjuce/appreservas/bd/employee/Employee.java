@@ -1,9 +1,10 @@
 package com.farjuce.appreservas.bd.employee;
 
-import com.farjuce.appreservas.bd.user.User;
+import com.farjuce.appreservas.bd.task.Task;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "employee")
@@ -20,7 +21,12 @@ public class Employee {
     @Column
     private int  hourly_rate;
 
-    @OneToOne(mappedBy = "employee") // Forma 1
-    private User user;
+    @ManyToMany
+    @JoinTable(
+        name = "employee_task",
+        joinColumns = @JoinColumn(name = "employee_id"),
+        inverseJoinColumns = @JoinColumn(name = "task_id")
+    )
+    private Set<Task> services;
 
 }
