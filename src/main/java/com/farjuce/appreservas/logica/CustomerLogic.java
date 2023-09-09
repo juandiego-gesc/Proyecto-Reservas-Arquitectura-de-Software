@@ -6,6 +6,8 @@ import com.farjuce.appreservas.bd.customer.Customer;
 import com.farjuce.appreservas.bd.customer.CustomerRepository;
 import com.farjuce.appreservas.controller.dto.CustomerDTO;
 
+import java.util.List;
+
 @Service
 public class CustomerLogic {
 
@@ -15,7 +17,7 @@ public class CustomerLogic {
         this.customerRepository = customerRepository;
     }
 
-    public void createCustomer(CustomerDTO customerDTO) {
+    public void addCustomer(CustomerDTO customerDTO) {
 
         Customer customer = new Customer();
 
@@ -24,5 +26,9 @@ public class CustomerLogic {
         customer.setPhone_number(customerDTO.getPhone_number());
 
         customerRepository.save(customer);
+    }
+
+    public List<Customer> getAllCustomers(){
+        return customerRepository.findAll();
     }
 }
