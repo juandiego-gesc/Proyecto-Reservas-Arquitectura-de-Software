@@ -2,7 +2,6 @@ package com.farjuce.appreservas.logica;
 
 import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.appointment.AppointmentRepository;
-import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.bd.employee.EmployeeRepository;
 import com.farjuce.appreservas.bd.task.Task;
 import com.farjuce.appreservas.bd.customer.Customer;
@@ -40,7 +39,9 @@ public class AppointmentLogic {
         appointment.setStart_time(appointmentDTO.getStart_time());
         appointment.setEnd_time(appointmentDTO.getEnd_time());
         appointment.setState(appointmentDTO.getState());
-        appointment.setCustomer(appointmentDTO.getCustomer());
+        appointment.setCustomer(customerRepository.getById(appointmentDTO.getCustomer_id()));
+        appointment.setEmployee(employeeRepository.getById(appointmentDTO.getEmployee_id()));
+        appointment.setTask(taskRepository.getById(appointmentDTO.getTask_id()));
 
         appointmentRepository.save(appointment);
     }

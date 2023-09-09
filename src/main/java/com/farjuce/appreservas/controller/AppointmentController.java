@@ -34,7 +34,7 @@ public class AppointmentController {
 
     }
 
-    @DeleteMapping(path = "/appointment/cancel")
+    @DeleteMapping(path = "/appointment/delete")
     public void deleteAppointment (AppointmentDTO appointmentDTO){
 
     }
@@ -52,15 +52,7 @@ public class AppointmentController {
             @PathVariable Long customer_id,
             @PathVariable Long appointment_id)
     {
-        return logic.relationCustomer(customer_id, appointment_id);
-
-    }
-    @PutMapping("/{employee_id}/appointment/{appointment_id}")
-    public Appointment employeeAppointment(
-            @PathVariable Long employee_id,
-            @PathVariable Long appointment_id)
-    {
-        return logic.relationCustomer(employee_id, appointment_id);
+        return logic.relation(customer_id, appointment_id);
 
     }
 

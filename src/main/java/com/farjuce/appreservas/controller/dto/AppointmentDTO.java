@@ -8,11 +8,11 @@ import java.time.LocalDate;
 @Data
 public class AppointmentDTO {
 
-    long appointment_id;
     private LocalDate date;
-    String start_time;
+    private String start_time;
     private String end_time;
     private String state;
-    private Customer customer;
-
+    private Long customer_id;
+    private Long employee_id;
+    private Long task_id;
 }

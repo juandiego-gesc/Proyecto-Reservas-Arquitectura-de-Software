@@ -20,16 +20,6 @@ public class Employee {
     @Column
     private String name;
 
-//    @ManyToMany (cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-//    @JoinTable(
-//        name = "employee_task",
-//        joinColumns = @JoinColumn(name = "employee_id"),
-//        inverseJoinColumns = @JoinColumn(name = "task_id")
-//    )
-//    @JsonIgnoreProperties("employees") // Exclude the serialization of the 'employees' property
-//    @JsonIgnore
-//    private Set<Task> tasks;
-
     @ManyToOne
     @JoinColumn (name = "task_id")
     @JsonManagedReference
