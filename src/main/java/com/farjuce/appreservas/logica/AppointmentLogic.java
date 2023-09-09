@@ -2,8 +2,11 @@ package com.farjuce.appreservas.logica;
 
 import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.appointment.AppointmentRepository;
+import com.farjuce.appreservas.bd.task.Task;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AppointmentLogic {
@@ -23,5 +26,9 @@ public class AppointmentLogic {
         appointment.setStart_time(appointmentDTO.getAppointmentStatus());
 
         appointmentRepository.save(appointment);*/
+    }
+
+    public List<Appointment> getAllAppointments(){
+        return appointmentRepository.findAll();
     }
 }

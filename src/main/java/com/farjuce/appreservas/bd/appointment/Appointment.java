@@ -40,5 +40,4 @@ public class Appointment{
 
     @Column
     private String state;
-
 }
