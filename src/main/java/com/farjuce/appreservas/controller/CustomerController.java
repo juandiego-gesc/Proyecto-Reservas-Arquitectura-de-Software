@@ -22,9 +22,9 @@ public class CustomerController {
 
 
     @PostMapping(path = "/customer/add")
-    public boolean saveCustomer(@RequestBody CustomerDTO CustomerDTO) {
+    public boolean saveCustomer(@RequestBody CustomerDTO customerDTO) {
 
-        logic.addCustomer(CustomerDTO);
+        logic.addCustomer(customerDTO);
         return true;
     }
 

@@ -19,21 +19,22 @@ public class TaskLogic {
         this.taskRepository = taskRepository;
     }
 
-    public void addTask(TaskDTO taskDTO){
-        Task task = new Task();
-        task.setName(taskDTO.getName());
-        task.setDescription(taskDTO.getDescription());
-        task.setDuration(taskDTO.getDuration());
-        task.setPrice(taskDTO.getPrice());
-        taskRepository.save(task);
+    public void addTask(List<TaskDTO> taskDTOs){
+        for(TaskDTO taskDTO : taskDTOs){
+            Task task = new Task();
+            task.setName(taskDTO.getName());
+            task.setDescription(taskDTO.getDescription());
+            task.setDuration(taskDTO.getDuration());
+            task.setPrice(taskDTO.getPrice());
+            taskRepository.save(task);
+        }
+
     }
 
     public List<Task> getAllTasks(){
         return taskRepository.findAll();
     }
 
-    public Set<Employee> getEmployeesForTask(Long taskId) {
-        return taskRepository.getReferenceById(taskId).getEmployees();
-    }
+
 
 }

@@ -1,6 +1,7 @@
 package com.farjuce.appreservas.controller;
 
 import com.farjuce.appreservas.bd.appointment.Appointment;
+import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.bd.task.Task;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import com.farjuce.appreservas.logica.AppointmentLogic;
@@ -8,6 +9,7 @@ import com.farjuce.appreservas.logica.AppointmentLogic;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class AppointmentController {
@@ -16,6 +18,11 @@ public class AppointmentController {
 
     public AppointmentController(AppointmentLogic logicAppointment) {
         this.logic = logicAppointment;
+    }
+
+    @GetMapping(path = "/appointments/getAvailabilityByTimeAndTask")
+    public List<Employee> getAvailabilityByTimeAndTask(@RequestParam Long task_id, @RequestParam String start_time, @RequestParam String end_time, @RequestParam String date) {
+        return logic.getAvailabilityByTimeAndTask(task_id, start_time, end_time, date);
     }
 
     @GetMapping(path = "/appointments/getAll")

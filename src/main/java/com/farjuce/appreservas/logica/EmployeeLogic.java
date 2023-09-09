@@ -27,7 +27,7 @@ public class EmployeeLogic {
     public void addEmployee(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         employee.setName(employeeDTO.getName());
-        employee.setTask(taskRepository.getById(employeeDTO.getTask_id()));
+        employee.setTask(taskRepository.getReferenceById(employeeDTO.getTask_id()));
 
         //Todo: See if I can reduce coupling here
 

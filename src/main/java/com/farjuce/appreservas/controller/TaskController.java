@@ -18,9 +18,9 @@ public class TaskController {
         this.logic = logic;
     }
 
-    @PostMapping(path = "/task/add")
-    public boolean saveTask(@RequestBody TaskDTO taskDTO){
-        logic.addTask(taskDTO);
+    @PostMapping(path = "/tasks/add")
+    public boolean saveTask(@RequestBody List<TaskDTO> taskDTOs){
+        logic.addTask(taskDTOs);
         return true;
     }
 
@@ -28,14 +28,6 @@ public class TaskController {
     public List<Task> getTask() {
         return logic.getAllTasks();
     }
-
-    //Get all employees for the task
-    @GetMapping(path = "/task/employeesForTask")
-    public Set<Employee> getEmployeesForTask(@RequestParam Long taskId) {
-        return logic.getEmployeesForTask(taskId);
-    }
-
-
 
 }
 

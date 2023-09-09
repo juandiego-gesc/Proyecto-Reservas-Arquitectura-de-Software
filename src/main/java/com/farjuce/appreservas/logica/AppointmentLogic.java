@@ -11,7 +11,10 @@ import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AppointmentLogic {
@@ -23,12 +26,11 @@ public class AppointmentLogic {
 
     private TaskRepository taskRepository;
 
-
-    public AppointmentLogic(AppointmentRepository appointmentRepository, CustomerRepository customerRepository, EmployeeRepository employeeRepository, TaskRepository taskRepository) {
+    public AppointmentLogic(AppointmentRepository appointmentRepository, CustomerRepository customerRepository, TaskRepository taskRepository, EmployeeRepository employeeRepository) {
         this.appointmentRepository = appointmentRepository;
         this.customerRepository = customerRepository;
-        this.employeeRepository = employeeRepository;
         this.taskRepository = taskRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     public void createAppointment(AppointmentDTO appointmentDTO) {
@@ -73,10 +75,18 @@ public class AppointmentLogic {
 
     }
 
-
-
-
     public List<Appointment> getAllAppointments(){
         return appointmentRepository.findAll();
+    }
+
+    public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date){
+        List<Object[]> queryResult = appointmentRepository.findAvailableEmployees(task_id, date, start_time, end_time);
+
+        List<Long> employeeIds = new ArrayList<>();
+        for(Object[] result : queryResult){
+            Long employeeId = ((Number) result[0]).longValue();
+            employeeIds.add(employeeId);
+        }
+        return employeeRepository.findAllById(employeeIds);
     }
 }
