@@ -1,5 +1,6 @@
 package com.farjuce.appreservas.logica;
 
+import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.bd.task.Task;
 import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.TaskDTO;
@@ -7,6 +8,7 @@ import com.farjuce.appreservas.controller.dto.CustomerDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TaskLogic {
@@ -28,6 +30,10 @@ public class TaskLogic {
 
     public List<Task> getAllTasks(){
         return taskRepository.findAll();
+    }
+
+    public Set<Employee> getEmployeesForTask(Long taskId) {
+        return taskRepository.getReferenceById(taskId).getEmployees();
     }
 
 }

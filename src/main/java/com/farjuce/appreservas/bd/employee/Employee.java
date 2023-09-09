@@ -32,7 +32,6 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn (name = "task_id")
-    @JsonIgnoreProperties({"employees"})
     @JsonManagedReference
     private Task task;
 
