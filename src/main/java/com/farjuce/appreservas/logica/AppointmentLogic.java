@@ -2,6 +2,7 @@ package com.farjuce.appreservas.logica;
 
 import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.appointment.AppointmentRepository;
+import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.bd.employee.EmployeeRepository;
 import com.farjuce.appreservas.bd.task.Task;
 import com.farjuce.appreservas.bd.customer.Customer;
@@ -30,21 +31,24 @@ public class AppointmentLogic {
         this.taskRepository = taskRepository;
     }
 
-    // Todo: Finish this
-
     public void createAppointment(AppointmentDTO appointmentDTO) {
         Appointment appointment = new Appointment();
-        appointment.setAppointment_id(appointmentDTO.getAppointment_id());
         appointment.setDate(appointmentDTO.getDate());
         appointment.setStart_time(appointmentDTO.getStart_time());
         appointment.setEnd_time(appointmentDTO.getEnd_time());
         appointment.setState(appointmentDTO.getState());
-        appointment.setCustomer(customerRepository.getById(appointmentDTO.getCustomer_id()));
-        appointment.setEmployee(employeeRepository.getById(appointmentDTO.getEmployee_id()));
-        appointment.setTask(taskRepository.getById(appointmentDTO.getTask_id()));
+        appointment.setCustomer(customerRepository.getReferenceById(appointmentDTO.getCustomer_id()));
+        appointment.setEmployee(employeeRepository.getReferenceById(appointmentDTO.getEmployee_id()));
+        appointment.setTask(taskRepository.getReferenceById(appointmentDTO.getTask_id()));
 
         appointmentRepository.save(appointment);
     }
+    public void cancelAppointment(Long id){
+
+        appointmentRepository.deleteById(id);
+
+    }
+
     public Appointment relationCustomer(Long customer_id, Long appointment_id){
 
         Appointment appointment = appointmentRepository.findById(appointment_id).get();
