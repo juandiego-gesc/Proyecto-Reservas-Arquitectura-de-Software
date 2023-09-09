@@ -44,7 +44,7 @@ public class AppointmentController {
             @PathVariable Long customer_id,
             @PathVariable Long appointment_id)
     {
-        return logicAppointment.relation(customer_id, appointment_id);
+        return logic.relation(customer_id, appointment_id);
 
     }
 

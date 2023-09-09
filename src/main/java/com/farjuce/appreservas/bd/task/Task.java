@@ -31,10 +31,6 @@ public class Task {
     @Column
     private int price;
 
-//    @ManyToMany(mappedBy = "tasks")
-//    @JsonIgnoreProperties("tasks")
-//    @JsonIgnore
-//    private Set<Employee> employees;
 
     @OneToMany (mappedBy= "task", cascade = CascadeType.ALL)
     @JsonBackReference
