@@ -29,15 +29,15 @@ public class AppointmentController {
         return true;
     }
 
-    @PostMapping(path = "/appointment/update")
-    public void updateAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+    @PutMapping(path = "/appointment/update")
+    public void updateAppointment(@RequestBody AppointmentDTO appointmentDTO) throws Exception {
+        logic.updateAppointment(appointmentDTO);
 
     }
 
     @DeleteMapping(path = "/appointment/delete")
     public void deleteAppointment (@RequestParam Long id){
         logic.cancelAppointment(id);
-
 
     }
     @PutMapping("/{task_id}/appointment/{appointment_id}")
@@ -46,7 +46,6 @@ public class AppointmentController {
             @PathVariable Long appointment_id)
     {
         return logic.relationCustomer(task_id, appointment_id);
-
     }
 
 

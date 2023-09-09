@@ -9,6 +9,7 @@ import com.farjuce.appreservas.bd.customer.Customer;
 import com.farjuce.appreservas.bd.customer.CustomerRepository;
 import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,6 +48,18 @@ public class AppointmentLogic {
 
         appointmentRepository.deleteById(id);
 
+    }
+
+    public void updateAppointment(AppointmentDTO appointmentDTO) throws Exception {
+        if(appointmentDTO.getId()!=null){
+            Appointment appointment = appointmentRepository.getReferenceById(appointmentDTO.getId());
+            appointment.setDate(appointmentDTO.getDate());
+            appointment.setStart_time(appointmentDTO.getStart_time());
+            appointment.setEnd_time(appointmentDTO.getEnd_time());
+            appointmentRepository.save(appointment);
+        }else{
+            throw new IllegalArgumentException("There is no ID specified!");
+        }
     }
 
     public Appointment relationCustomer(Long customer_id, Long appointment_id){
