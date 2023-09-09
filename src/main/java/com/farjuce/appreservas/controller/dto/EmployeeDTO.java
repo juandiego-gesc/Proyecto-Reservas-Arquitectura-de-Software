@@ -8,8 +8,7 @@ import java.util.Set;
 @Data
 public class EmployeeDTO {
 
-    private Long employee_id;
     private String name;
-    private Set<Long> task_ids;
+    private Long task_id;
 
 }
