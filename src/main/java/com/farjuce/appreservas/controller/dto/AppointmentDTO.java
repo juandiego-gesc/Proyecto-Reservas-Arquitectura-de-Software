@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Data
 public class AppointmentDTO {
 
+    private Long id;
     private LocalDate date;
     private String start_time;
     private String end_time;
