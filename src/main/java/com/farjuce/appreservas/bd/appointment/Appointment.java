@@ -12,8 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "appointment")
 @Data
-@Builder
-public class Appointment {
+public class Appointment{
 
     @Id
     private Long appointment_id;

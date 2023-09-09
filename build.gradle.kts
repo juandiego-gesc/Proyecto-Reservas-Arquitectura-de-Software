@@ -26,10 +26,12 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("mysql:mysql-connector-java:8.0.32")
 
+
 	compileOnly("org.projectlombok:lombok")
 	implementation("mysql:mysql-connector-java:8.0.32")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
 }
 
 tasks.withType<Test> {

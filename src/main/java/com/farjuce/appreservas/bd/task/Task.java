@@ -30,11 +30,11 @@ public class Task {
     @Column
     private int price;
 
-    /*@ManyToMany(mappedBy = "task")
-    private Set<Employee> employees;*/
+    @ManyToMany(mappedBy = "task")
+    private Set<Employee> employees;
 
     @OneToMany (mappedBy= "task")
-    private Set<Appointment> appointments;
+    private Set<Appointment> appointment;
 }
 
 

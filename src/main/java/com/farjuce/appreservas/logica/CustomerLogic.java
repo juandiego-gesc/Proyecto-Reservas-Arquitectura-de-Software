@@ -17,12 +17,12 @@ public class CustomerLogic {
 
     public void createCustomer(CustomerDTO customerDTO) {
 
-        Customer customer = Customer.builder()
-                .customer_id(customerDTO.getCustomer_id())
-                .name(customerDTO.getName())
-                .email(customerDTO.getEmail())
-                .phone_number(customerDTO.getPhone_number())
-                .build();
+        Customer customer = new Customer();
+
+        customer.setName(customerDTO.getName());
+        customer.setEmail(customerDTO.getEmail());
+        customer.setPhone_number(customerDTO.getPhone_number());
+
         customerRepository.save(customer);
     }
 }

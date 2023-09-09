@@ -17,8 +17,10 @@ public class CustomerController {
     }
 
 
-    @PostMapping(path = "/customer/create")
-    public void createCustomer(@RequestBody CustomerDTO CustomerDTO) {
+    @PostMapping(path = "/customer/add")
+    public boolean saveCustomer(@RequestBody CustomerDTO CustomerDTO) {
+
         logicCustomer.createCustomer(CustomerDTO);
+        return true;
     }
 }

@@ -20,7 +20,7 @@ public class EmployeeController {
         this.logic = logic;
     }
 
-    @GetMapping(path = "/employees/getAll")
+    @GetMapping(path = "/employees/getall")
     public List<Employee> getAllEmployeesEmployees() {
         return logic.getAllEmployees();
     }

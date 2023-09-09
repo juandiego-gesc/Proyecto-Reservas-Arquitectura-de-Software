@@ -18,15 +18,15 @@ public class Employee {
     @Column
     private String name;
 
-    /*@ManyToMany
+    @ManyToMany
     @JoinTable(
         name = "employee_task",
         joinColumns = @JoinColumn(name = "employee_id"),
         inverseJoinColumns = @JoinColumn(name = "task_id")
     )
-    private Set<Task> services;*/
+    private Set<Task> task;
 
     @OneToMany (mappedBy= "employee")
-    private Set<Appointment> appointments;
+    private Set<Appointment> appointment;
 
 }

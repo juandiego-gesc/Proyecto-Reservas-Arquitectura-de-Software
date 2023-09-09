@@ -11,13 +11,12 @@ import com.farjuce.appreservas.bd.appointment.Appointment;
 
 @Entity
 @Table(name = "customer")
-
 @Data
-@Builder
 public class Customer {
-    
+
     @Id
-    private Long customer_id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long costumer_id;
 
     @Column
     private String name;  
