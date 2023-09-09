@@ -10,6 +10,7 @@ import com.farjuce.appreservas.bd.customer.CustomerRepository;
 import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,51 +25,64 @@ public class AppointmentLogic {
 
     private TaskRepository taskRepository;
 
-    public AppointmentLogic(AppointmentRepository appointmentRepository, CustomerRepository customerRepository, TaskRepository taskRepository, EmployeeRepository employeeRepository) {
+    public AppointmentLogic(AppointmentRepository appointmentRepository, CustomerRepository customerRepository,
+            TaskRepository taskRepository, EmployeeRepository employeeRepository) {
         this.appointmentRepository = appointmentRepository;
         this.customerRepository = customerRepository;
         this.taskRepository = taskRepository;
         this.employeeRepository = employeeRepository;
     }
 
-    public void createAppointment(AppointmentDTO appointmentDTO) {
-        Appointment appointment = new Appointment();
-        appointment.setDate(appointmentDTO.getDate());
-        appointment.setStart_time(appointmentDTO.getStart_time());
-        appointment.setEnd_time(appointmentDTO.getEnd_time());
-        appointment.setState(appointmentDTO.getState());
-        appointment.setCustomer(customerRepository.getReferenceById(appointmentDTO.getCustomer_id()));
-        appointment.setEmployee(employeeRepository.getReferenceById(appointmentDTO.getEmployee_id()));
-        appointment.setTask(taskRepository.getReferenceById(appointmentDTO.getTask_id()));
+    public String createAppointment(AppointmentDTO appointmentDTO) {
 
-        appointmentRepository.save(appointment);
+        String dateInString = appointmentDTO.getDate().toString();
+        List<Employee> availability = getAvailabilityByTimeAndTask(appointmentDTO.getTask_id(),
+                appointmentDTO.getStart_time(), appointmentDTO.getEnd_time(), dateInString);
+
+        if (availability.stream().anyMatch(employee -> employee.getEmployee_id() == appointmentDTO.getEmployee_id())) {
+            Appointment appointment = new Appointment();
+            appointment.setDate(appointmentDTO.getDate());
+            appointment.setStart_time(appointmentDTO.getStart_time());
+            appointment.setEnd_time(appointmentDTO.getEnd_time());
+            appointment.setState(appointmentDTO.getState());
+            appointment.setCustomer(customerRepository.getReferenceById(appointmentDTO.getCustomer_id()));
+            appointment.setEmployee(employeeRepository.getReferenceById(appointmentDTO.getEmployee_id()));
+            appointment.setTask(taskRepository.getReferenceById(appointmentDTO.getTask_id()));
+            appointmentRepository.save(appointment);
+            return "Cita Agendada";
+        } else{
+            return "Cita No Disponible";
+        }
+
     }
-    public void cancelAppointment(Long id){
+
+    public void cancelAppointment(Long id) {
 
         appointmentRepository.deleteById(id);
 
     }
 
     public void updateAppointment(AppointmentDTO appointmentDTO) throws Exception {
-        if(appointmentDTO.getId()!=null){
+        if (appointmentDTO.getId() != null) {
             Appointment appointment = appointmentRepository.getReferenceById(appointmentDTO.getId());
             appointment.setDate(appointmentDTO.getDate());
             appointment.setStart_time(appointmentDTO.getStart_time());
             appointment.setEnd_time(appointmentDTO.getEnd_time());
             appointmentRepository.save(appointment);
-        }else{
+        } else {
             throw new IllegalArgumentException("There is no ID specified!");
         }
     }
 
-    public Appointment relationCustomer(Long customer_id, Long appointment_id){
+    public Appointment relationCustomer(Long customer_id, Long appointment_id) {
 
         Appointment appointment = appointmentRepository.findById(appointment_id).get();
         Customer customer = customerRepository.findById(customer_id).get();
         appointment.setCustomer(customer);
         return appointmentRepository.save(appointment);
     }
-    public Appointment relationEmployee(Long employee_id, Long appointment_id){
+
+    public Appointment relationEmployee(Long employee_id, Long appointment_id) {
 
         Appointment appointment = appointmentRepository.findById(appointment_id).get();
         Employee employee = employeeRepository.findById(employee_id).get();
@@ -76,7 +90,7 @@ public class AppointmentLogic {
         return appointmentRepository.save(appointment);
     }
 
-    public Appointment relationTask(Long task_id, Long appointment_id){
+    public Appointment relationTask(Long task_id, Long appointment_id) {
 
         Appointment appointment = appointmentRepository.findById(appointment_id).get();
         Task task = taskRepository.findById(task_id).get();
@@ -85,15 +99,20 @@ public class AppointmentLogic {
 
     }
 
-    public List<Appointment> getAllAppointments(){
+    public List<Appointment> getAllAppointments() {
         return appointmentRepository.findAll();
     }
 
-    public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date){
+    public List<Appointment> getUserAppointments(Long customer_id) {
+        System.out.println(customer_id);
+        return appointmentRepository.findByCustomerId(customer_id);
+    }
+
+    public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date) {
         List<Object[]> queryResult = appointmentRepository.findAvailableEmployees(task_id, date, start_time, end_time);
 
         List<Long> employeeIds = new ArrayList<>();
-        for(Object[] result : queryResult){
+        for (Object[] result : queryResult) {
             Long employeeId = ((Number) result[0]).longValue();
             employeeIds.add(employeeId);
         }

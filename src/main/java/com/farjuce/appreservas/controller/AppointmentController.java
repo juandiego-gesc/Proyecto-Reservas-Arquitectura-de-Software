@@ -1,6 +1,7 @@
 package com.farjuce.appreservas.controller;
 
 import com.farjuce.appreservas.bd.appointment.Appointment;
+import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import com.farjuce.appreservas.logica.AppointmentLogic;
 
@@ -22,10 +23,20 @@ public class AppointmentController {
         return logic.getAllAppointments();
     }
 
+    @GetMapping(path = "/appointments/getUserAppointments")
+    public List<Appointment> getUserAppointments(@RequestParam Long customerId) {
+        System.out.println(customerId);
+        return logic.getUserAppointments(customerId);
+    }
+
+    @GetMapping(path = "/appointments/getAvaliable")
+    public List<Employee> getAvaliaAppointments(@RequestParam Long task_id, @RequestParam String start_time, @RequestParam String end_time, @RequestParam String date ) {
+        return logic.getAvailabilityByTimeAndTask(task_id,start_time, end_time,date);
+    }
+
     @PostMapping(path = "/appointment/create")
-    public boolean createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
-        logic.createAppointment(appointmentDTO);
-        return true;
+    public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+        return logic.createAppointment(appointmentDTO);
     }
 
     @PostMapping(path = "/appointment/update")

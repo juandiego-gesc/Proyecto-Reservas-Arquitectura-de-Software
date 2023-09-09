@@ -6,8 +6,9 @@ import com.farjuce.appreservas.bd.task.Task;
 
 import lombok.Data;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "appointment")
