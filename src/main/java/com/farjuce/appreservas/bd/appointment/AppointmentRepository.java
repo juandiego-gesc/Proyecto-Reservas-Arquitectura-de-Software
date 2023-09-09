@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
     @Query(value = "SELECT * FROM appointment where customer_id = :customer_id", nativeQuery = true)
-    List<Appointment> findByCustomerId(Long customerId);
+    List<Appointment> findByCustomerId(@Param("customer_id") Long customerId);
 
     @Query(value = "SELECT emp.employee_id, emp.name " +
-            "FROM employee emp " +
+            "FROM employee emp , branch as br " +
             "WHERE emp.task_id = :taskId " +
             "AND emp.employee_id NOT IN ( " +
             "    SELECT app.employee_id " +
@@ -25,7 +25,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             "        (TIME(app.start_time) >= TIME(:startTime) AND TIME(app.end_time) <= TIME(:endTime)) " +
             "    ) " +
             "    AND app.task_id = :taskId " +
-            ")", nativeQuery = true)
+            ") AND br.branch_id = 1 " +
+            "  AND (TIME(br.opening_time) <= TIME(:startTime) AND TIME(br.closure_time) > TIME(:endTime))", nativeQuery = true)
     List<Object[]> findAvailableEmployees(
             @Param("taskId") Long taskId,
             @Param("date") String date,

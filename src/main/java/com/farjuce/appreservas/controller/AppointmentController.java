@@ -33,8 +33,8 @@ public class AppointmentController {
         return logic.getAllAppointments();
     }
 
-    @GetMapping(path = "/appointments/getAvaliable")
-    public List<Employee> getAvaliaAppointments(@RequestParam Long task_id, @RequestParam String start_time,
+    @GetMapping(path = "/appointments/getAvailable")
+    public List<Employee> getAvailableAppointments(@RequestParam Long task_id, @RequestParam String start_time,
             @RequestParam String end_time, @RequestParam String date) {
         return logic.getAvailabilityByTimeAndTask(task_id, start_time, end_time, date);
     }
