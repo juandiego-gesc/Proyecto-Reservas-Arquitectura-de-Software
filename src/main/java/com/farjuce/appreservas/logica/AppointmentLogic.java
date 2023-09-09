@@ -81,9 +81,13 @@ public class AppointmentLogic {
         appointment.setCustomer(customer);
         return appointmentRepository.save(appointment);
     }
+<<<<<<< HEAD
 
     public Appointment relationEmployee(Long employee_id, Long appointment_id) {
 
+=======
+    public Appointment relationEmployee(Long employee_id, Long appointment_id){
+>>>>>>> e4041fd7b5d9ae45a5c02c116c74ed13a12092dc
         Appointment appointment = appointmentRepository.findById(appointment_id).get();
         Employee employee = employeeRepository.findById(employee_id).get();
         appointment.setEmployee(employee);
@@ -96,19 +100,22 @@ public class AppointmentLogic {
         Task task = taskRepository.findById(task_id).get();
         appointment.setTask(task);
         return appointmentRepository.save(appointment);
-
     }
 
     public List<Appointment> getAllAppointments() {
         return appointmentRepository.findAll();
-    }
 
+<<<<<<< HEAD
     public List<Appointment> getUserAppointments(Long customer_id) {
         System.out.println(customer_id);
         return appointmentRepository.findByCustomerId(customer_id);
     }
 
     public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date) {
+=======
+    }
+    public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date){
+>>>>>>> e4041fd7b5d9ae45a5c02c116c74ed13a12092dc
         List<Object[]> queryResult = appointmentRepository.findAvailableEmployees(task_id, date, start_time, end_time);
 
         List<Long> employeeIds = new ArrayList<>();
@@ -117,5 +124,19 @@ public class AppointmentLogic {
             employeeIds.add(employeeId);
         }
         return employeeRepository.findAllById(employeeIds);
+    }
+
+    public List<Appointment> getMyAppointments(Long id){
+
+        List<Appointment> myAppointment = new ArrayList<>();
+        List<Appointment> appointments = appointmentRepository.findAll();
+        for (Appointment appointment : appointments) {
+
+            if(appointment.getCustomer().getCustomer_id()==id){
+                myAppointment.add(appointment);
+
+            }
+        }
+        return myAppointment;
     }
 }

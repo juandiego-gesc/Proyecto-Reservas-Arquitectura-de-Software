@@ -18,25 +18,25 @@ public class AppointmentController {
         this.logic = logicAppointment;
     }
 
+    @PostMapping(path = "/appointment/create")
+    public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+        return logic.createAppointment(appointmentDTO);
+    }
+
+    @GetMapping(path = "/getMyAppointment/{id}")
+    public List<Appointment> getMyAppointment(@PathVariable Long id) {
+        return logic.getMyAppointments(id);
+    }
+
     @GetMapping(path = "/appointments/getAll")
     public List<Appointment> getAllAppointments() {
         return logic.getAllAppointments();
     }
 
-    @GetMapping(path = "/appointments/getUserAppointments")
-    public List<Appointment> getUserAppointments(@RequestParam Long customerId) {
-        System.out.println(customerId);
-        return logic.getUserAppointments(customerId);
-    }
-
     @GetMapping(path = "/appointments/getAvaliable")
-    public List<Employee> getAvaliaAppointments(@RequestParam Long task_id, @RequestParam String start_time, @RequestParam String end_time, @RequestParam String date ) {
-        return logic.getAvailabilityByTimeAndTask(task_id,start_time, end_time,date);
-    }
-
-    @PostMapping(path = "/appointment/create")
-    public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
-        return logic.createAppointment(appointmentDTO);
+    public List<Employee> getAvaliaAppointments(@RequestParam Long task_id, @RequestParam String start_time,
+            @RequestParam String end_time, @RequestParam String date) {
+        return logic.getAvailabilityByTimeAndTask(task_id, start_time, end_time, date);
     }
 
     @PostMapping(path = "/appointment/update")
@@ -45,16 +45,7 @@ public class AppointmentController {
     }
 
     @DeleteMapping(path = "/appointment/delete")
-    public void deleteAppointment (AppointmentDTO appointmentDTO){
+    public void deleteAppointment(AppointmentDTO appointmentDTO) {
 
     }
-
-    @PutMapping("/{customer_id}/appointment/{appointment_id}")
-    public Appointment customerAppointment(
-            @PathVariable Long customer_id,
-            @PathVariable Long appointment_id)
-    {
-        return logic.relationCustomer(customer_id, appointment_id);
-    }
-
 }
