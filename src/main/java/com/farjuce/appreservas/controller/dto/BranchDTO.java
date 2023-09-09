@@ -2,13 +2,12 @@ package com.farjuce.appreservas.controller.dto;
 
 import lombok.Data;
 
-import javax.persistence.Column;
 import java.time.LocalTime;
 
 @Data
-public class BusinessDTO {
+public class BranchDTO {
 
-    private Long business_id;
+    private Long branch_id;
 
     private String name;
 
