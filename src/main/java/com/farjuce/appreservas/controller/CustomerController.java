@@ -1,5 +1,7 @@
 package com.farjuce.appreservas.controller;
 
+import com.farjuce.appreservas.bd.customer.Customer;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,20 +9,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.farjuce.appreservas.controller.dto.CustomerDTO;
 import com.farjuce.appreservas.logica.CustomerLogic;
 
+import java.util.List;
+
 @RestController
 public class CustomerController {
 
-    private CustomerLogic logicCustomer;
+    private CustomerLogic logic;
 
     public CustomerController(CustomerLogic logicCustomer) {
-        this.logicCustomer = logicCustomer;
+        this.logic = logicCustomer;
     }
 
 
     @PostMapping(path = "/customer/add")
     public boolean saveCustomer(@RequestBody CustomerDTO CustomerDTO) {
 
-        logicCustomer.createCustomer(CustomerDTO);
+        logic.addCustomer(CustomerDTO);
         return true;
     }
+
+    @GetMapping(path = "/customer/getAll")
+    public List<Customer> getCustomer(){
+        return logic.getAllCustomers();
+    }
 }
+
+

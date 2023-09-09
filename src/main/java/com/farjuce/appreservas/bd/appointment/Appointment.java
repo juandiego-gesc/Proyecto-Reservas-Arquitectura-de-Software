@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "appointment")
@@ -15,9 +16,22 @@ import javax.persistence.*;
 public class Appointment{
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long appointment_id;
 
-    @ManyToOne
+    @Column
+    private LocalDate date;
+
+    @Column
+    private String start_time;
+
+    @Column
+    private String end_time;
+
+    @Column
+    private String state;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -28,17 +42,5 @@ public class Appointment{
     @ManyToOne
     @JoinColumn (name = "task_id")
     private Task task;
-
-    @Column
-    private String date;
-
-    @Column
-    private String start_time;
-
-    @Column
-    private String end_time;
-
-    @Column
-    private String state;
 
 }

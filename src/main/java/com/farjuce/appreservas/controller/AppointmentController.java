@@ -1,12 +1,10 @@
 package com.farjuce.appreservas.controller;
 
+import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import com.farjuce.appreservas.logica.AppointmentLogic;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AppointmentController {
@@ -19,8 +17,9 @@ public class AppointmentController {
 
 
     @PostMapping(path = "/appointment/create")
-    public void createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+    public boolean createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         logicAppointment.createAppointment(appointmentDTO);
+        return true;
     }
 
     @PostMapping(path = "/appointment/update")
@@ -30,6 +29,15 @@ public class AppointmentController {
 
     @DeleteMapping(path = "/appointment/delete")
     public void deleteAppointment (AppointmentDTO appointmentDTO){
+
+    }
+
+    @PutMapping("/{customer_id}/appointment/{appointment_id}")
+    public Appointment customerAppointment(
+            @PathVariable Long customer_id,
+            @PathVariable Long appointment_id)
+    {
+        return logicAppointment.relation(customer_id, appointment_id);
 
     }
 

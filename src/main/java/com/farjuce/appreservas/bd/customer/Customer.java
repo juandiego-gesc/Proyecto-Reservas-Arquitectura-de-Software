@@ -1,8 +1,11 @@
 package com.farjuce.appreservas.bd.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -27,6 +30,7 @@ public class Customer {
     @Column
     private long phone_number; 
 
+    @JsonIgnore
     @OneToMany (mappedBy= "customer")
-    private Set<Appointment> appointments;
+    private Set<Appointment> appointments = new HashSet<>();
 }
