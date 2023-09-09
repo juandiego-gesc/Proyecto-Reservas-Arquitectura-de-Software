@@ -16,7 +16,7 @@ public class TaskController {
     }
 
     @PostMapping(path = "/tasks/add")
-    public boolean saveTask(@RequestBody List<TaskDTO> taskDTOs){
+    public boolean saveTask(@RequestBody List<TaskDTO> taskDTOs) {
         logic.addTask(taskDTOs);
         return true;
     }
@@ -27,4 +27,3 @@ public class TaskController {
     }
 
 }
-

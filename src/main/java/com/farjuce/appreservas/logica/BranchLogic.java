@@ -27,5 +27,4 @@ public class BranchLogic {
         repository.save(branch);
     }
 
-
 }

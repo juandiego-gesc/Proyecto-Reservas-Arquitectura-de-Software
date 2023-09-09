@@ -28,7 +28,7 @@ public class CustomerLogic {
         customerRepository.save(customer);
     }
 
-    public List<Customer> getAllCustomers(){
+    public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 }

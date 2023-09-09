@@ -6,17 +6,15 @@ import com.farjuce.appreservas.bd.task.Task;
 
 import lombok.Data;
 
-import java.time.LocalDate;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "appointment")
 @Data
-public class Appointment{
+public class Appointment {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long appointment_id;
 
     @Column
@@ -36,10 +34,10 @@ public class Appointment{
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn (name = "employee_id")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     @ManyToOne
-    @JoinColumn (name = "task_id")
+    @JoinColumn(name = "task_id")
     private Task task;
 }

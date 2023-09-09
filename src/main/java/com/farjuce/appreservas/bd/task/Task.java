@@ -13,7 +13,7 @@ import java.util.Set;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long task_id;
 
     @Column
@@ -28,11 +28,8 @@ public class Task {
     @Column
     private int price;
 
-
-    @OneToMany (mappedBy= "task", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<Employee> employees;
 
 }
-
-

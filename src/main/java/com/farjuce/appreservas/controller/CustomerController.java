@@ -28,9 +28,7 @@ public class CustomerController {
     }
 
     @GetMapping(path = "/customer/getAll")
-    public List<Customer> getCustomer(){
+    public List<Customer> getCustomer() {
         return logic.getAllCustomers();
     }
 }
-
-

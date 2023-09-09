@@ -1,7 +1,5 @@
 package com.farjuce.appreservas.controller.dto;
 
-import java.time.LocalDate;
-
 import lombok.Data;
 
 @Data

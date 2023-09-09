@@ -26,9 +26,8 @@ public class EmployeeController {
     }
 
     @PostMapping(path = "/employee/add")
-    public boolean addEmployee(@RequestBody EmployeeDTO employeeDTO){
+    public boolean addEmployee(@RequestBody EmployeeDTO employeeDTO) {
         logic.addEmployee(employeeDTO);
         return true;
     }
 }
-

@@ -16,8 +16,8 @@ public class TaskLogic {
         this.taskRepository = taskRepository;
     }
 
-    public void addTask(List<TaskDTO> taskDTOs){
-        for(TaskDTO taskDTO : taskDTOs){
+    public void addTask(List<TaskDTO> taskDTOs) {
+        for (TaskDTO taskDTO : taskDTOs) {
             Task task = new Task();
             task.setName(taskDTO.getName());
             task.setDescription(taskDTO.getDescription());
@@ -28,7 +28,7 @@ public class TaskLogic {
 
     }
 
-    public List<Task> getAllTasks(){
+    public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 

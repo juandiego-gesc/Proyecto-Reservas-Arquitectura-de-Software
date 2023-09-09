@@ -16,19 +16,19 @@ import com.farjuce.appreservas.bd.appointment.Appointment;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customer_id;
 
     @Column
-    private String name;  
+    private String name;
 
     @Column
-    private String email;  
+    private String email;
 
     @Column
-    private long phone_number; 
+    private long phone_number;
 
     @JsonIgnore
-    @OneToMany (mappedBy= "customer")
+    @OneToMany(mappedBy = "customer")
     private Set<Appointment> appointments = new HashSet<>();
 }

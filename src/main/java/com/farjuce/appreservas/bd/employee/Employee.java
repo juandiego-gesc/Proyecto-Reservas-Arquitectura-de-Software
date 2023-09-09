@@ -12,14 +12,14 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employee_id;
 
     @Column
     private String name;
 
     @ManyToOne
-    @JoinColumn (name = "task_id")
+    @JoinColumn(name = "task_id")
     @JsonManagedReference
     private Task task;
 

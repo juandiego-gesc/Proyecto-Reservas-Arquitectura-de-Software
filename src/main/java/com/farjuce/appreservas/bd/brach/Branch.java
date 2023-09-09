@@ -11,7 +11,7 @@ import java.time.LocalTime;
 public class Branch {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long branch_id;
 
     @Column

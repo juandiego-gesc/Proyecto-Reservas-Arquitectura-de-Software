@@ -10,7 +10,6 @@ import com.farjuce.appreservas.bd.customer.CustomerRepository;
 import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,17 +48,25 @@ public class AppointmentLogic {
             appointment.setEmployee(employeeRepository.getReferenceById(appointmentDTO.getEmployee_id()));
             appointment.setTask(taskRepository.getReferenceById(appointmentDTO.getTask_id()));
             appointmentRepository.save(appointment);
-            return "Cita Agendada";
-        } else{
-            return "Cita No Disponible";
+            return "Appointment Booked";
+        } else {
+            return "Appointment Not Booked";
         }
+    }
 
+    public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date) {
+        List<Object[]> queryResult = appointmentRepository.findAvailableEmployees(task_id, date, start_time, end_time);
+
+        List<Long> employeeIds = new ArrayList<>();
+        for (Object[] result : queryResult) {
+            Long employeeId = ((Number) result[0]).longValue();
+            employeeIds.add(employeeId);
+        }
+        return employeeRepository.findAllById(employeeIds);
     }
 
     public void cancelAppointment(Long id) {
-
         appointmentRepository.deleteById(id);
-
     }
 
     public void updateAppointment(AppointmentDTO appointmentDTO) throws Exception {
@@ -81,13 +88,8 @@ public class AppointmentLogic {
         appointment.setCustomer(customer);
         return appointmentRepository.save(appointment);
     }
-<<<<<<< HEAD
 
     public Appointment relationEmployee(Long employee_id, Long appointment_id) {
-
-=======
-    public Appointment relationEmployee(Long employee_id, Long appointment_id){
->>>>>>> e4041fd7b5d9ae45a5c02c116c74ed13a12092dc
         Appointment appointment = appointmentRepository.findById(appointment_id).get();
         Employee employee = employeeRepository.findById(employee_id).get();
         appointment.setEmployee(employee);
@@ -104,35 +106,15 @@ public class AppointmentLogic {
 
     public List<Appointment> getAllAppointments() {
         return appointmentRepository.findAll();
-
-<<<<<<< HEAD
-    public List<Appointment> getUserAppointments(Long customer_id) {
-        System.out.println(customer_id);
-        return appointmentRepository.findByCustomerId(customer_id);
     }
 
-    public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date) {
-=======
-    }
-    public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date){
->>>>>>> e4041fd7b5d9ae45a5c02c116c74ed13a12092dc
-        List<Object[]> queryResult = appointmentRepository.findAvailableEmployees(task_id, date, start_time, end_time);
-
-        List<Long> employeeIds = new ArrayList<>();
-        for (Object[] result : queryResult) {
-            Long employeeId = ((Number) result[0]).longValue();
-            employeeIds.add(employeeId);
-        }
-        return employeeRepository.findAllById(employeeIds);
-    }
-
-    public List<Appointment> getMyAppointments(Long id){
+    public List<Appointment> getMyAppointments(Long id) {
 
         List<Appointment> myAppointment = new ArrayList<>();
         List<Appointment> appointments = appointmentRepository.findAll();
         for (Appointment appointment : appointments) {
 
-            if(appointment.getCustomer().getCustomer_id()==id){
+            if (appointment.getCustomer().getCustomer_id() == id) {
                 myAppointment.add(appointment);
 
             }

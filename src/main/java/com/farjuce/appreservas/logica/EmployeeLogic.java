@@ -30,4 +30,3 @@ public class EmployeeLogic {
         return employeeRepository.findAll();
     }
 }
-
