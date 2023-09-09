@@ -2,6 +2,9 @@ package com.farjuce.appreservas.bd.task;
 
 import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -30,11 +33,18 @@ public class Task {
     @Column
     private int price;
 
-    @ManyToMany(mappedBy = "task")
+//    @ManyToMany(mappedBy = "tasks")
+//    @JsonIgnoreProperties("tasks")
+//    @JsonIgnore
+//    private Set<Employee> employees;
+
+    @OneToMany (mappedBy= "task", cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<Employee> employees;
 
-    @OneToMany (mappedBy= "task")
-    private Set<Appointment> appointment;
+
+//    @OneToMany (mappedBy= "task")
+//    private Set<Appointment> appointments;
 }
 
 

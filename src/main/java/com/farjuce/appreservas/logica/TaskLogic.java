@@ -19,7 +19,6 @@ public class TaskLogic {
 
     public void addTask(TaskDTO taskDTO){
         Task task = new Task();
-//        task.setTask_id(taskDTO.getTaskId()); The id is auto-generated
         task.setName(taskDTO.getName());
         task.setDescription(taskDTO.getDescription());
         task.setDuration(taskDTO.getDuration());
