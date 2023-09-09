@@ -20,7 +20,6 @@ public class CustomerController {
         this.logic = logicCustomer;
     }
 
-
     @PostMapping(path = "/customer/add")
     public boolean saveCustomer(@RequestBody CustomerDTO customerDTO) {
 

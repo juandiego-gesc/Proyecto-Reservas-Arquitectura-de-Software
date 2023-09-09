@@ -1,12 +1,10 @@
 package com.farjuce.appreservas.bd.employee;
 
-import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.task.Task;
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "employee")
@@ -24,8 +22,5 @@ public class Employee {
     @JoinColumn (name = "task_id")
     @JsonManagedReference
     private Task task;
-
-//    @OneToMany (mappedBy= "employee")
-//    private Set<Appointment> appointments;
 
 }

@@ -4,7 +4,6 @@ import com.farjuce.appreservas.bd.customer.Customer;
 import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.bd.task.Task;
 
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;

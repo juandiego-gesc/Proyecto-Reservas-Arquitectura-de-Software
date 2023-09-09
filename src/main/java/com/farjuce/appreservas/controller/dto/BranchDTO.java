@@ -8,16 +8,10 @@ import java.time.LocalTime;
 public class BranchDTO {
 
     private Long branch_id;
-
     private String name;
-
     private String address;
-
     private String type;
-
     private LocalTime opening_time;
-
     private LocalTime closure_time;
-
 
 }

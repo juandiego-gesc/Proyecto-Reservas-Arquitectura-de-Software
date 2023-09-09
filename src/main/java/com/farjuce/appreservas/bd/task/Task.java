@@ -1,6 +1,5 @@
 package com.farjuce.appreservas.bd.task;
 
-import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.employee.Employee;
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
@@ -12,8 +11,6 @@ import java.util.Set;
 @Table(name = "task")
 @Data
 public class Task {
-
-    // Auto generate ID
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -36,9 +33,6 @@ public class Task {
     @JsonBackReference
     private Set<Employee> employees;
 
-
-//    @OneToMany (mappedBy= "task")
-//    private Set<Appointment> appointments;
 }
 
 

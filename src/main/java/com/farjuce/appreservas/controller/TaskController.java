@@ -1,14 +1,11 @@
 package com.farjuce.appreservas.controller;
 
-import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.bd.task.Task;
 import com.farjuce.appreservas.controller.dto.TaskDTO;
-import com.farjuce.appreservas.controller.dto.CustomerDTO;
 import com.farjuce.appreservas.logica.TaskLogic;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 public class TaskController {

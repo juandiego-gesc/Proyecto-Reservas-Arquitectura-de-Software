@@ -1,10 +1,8 @@
 package com.farjuce.appreservas.bd.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Builder;
 import lombok.Data;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +17,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long costumer_id;
+    private Long custumer_id;
 
     @Column
     private String name;  

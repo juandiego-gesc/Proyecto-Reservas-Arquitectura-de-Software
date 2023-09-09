@@ -1,6 +1,5 @@
 package com.farjuce.appreservas.controller.dto;
 
-import com.farjuce.appreservas.bd.customer.Customer;
 import lombok.Data;
 
 import java.time.LocalDate;

@@ -6,11 +6,8 @@ import lombok.Data;
 public class TaskDTO {
 
     private String name;
-
     private String description;
-
     private int duration;
-
     private int price;
 
 }
