@@ -26,7 +26,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             "    ) " +
             "    AND app.task_id = :taskId " +
             ") AND br.branch_id = 1 " +
-            "  AND (TIME(br.opening_time) <= TIME(:startTime) AND TIME(br.closure_time) > TIME(:endTime))", nativeQuery = true)
+            "  AND (TIME(br.opening_time) <= TIME(:startTime) AND TIME(br.closure_time) >= TIME(:endTime))", nativeQuery = true)
     List<Object[]> findAvailableEmployees(
             @Param("taskId") Long taskId,
             @Param("date") String date,
