@@ -39,8 +39,9 @@ public class AppointmentController {
         return logic.getAvailabilityByTimeAndTask(task_id, start_time, end_time, date);
     }
 
-    @PostMapping(path = "/appointment/update")
-    public void updateAppointment(AppointmentDTO appointmentDTO) {
+    @PutMapping(path = "/appointment/update")
+    public void updateAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+        logic.updateAppointment(appointmentDTO);
 
     }
 

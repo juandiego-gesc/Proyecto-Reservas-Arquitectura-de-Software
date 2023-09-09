@@ -48,9 +48,9 @@ public class AppointmentLogic {
             appointment.setEmployee(employeeRepository.getReferenceById(appointmentDTO.getEmployee_id()));
             appointment.setTask(taskRepository.getReferenceById(appointmentDTO.getTask_id()));
             appointmentRepository.save(appointment);
-            return "Appointment Booked";
+            return "Appointment booked";
         } else {
-            return "Appointment Not Booked";
+            return "Appointment not booked, around that time is already booked";
         }
     }
 
@@ -69,16 +69,15 @@ public class AppointmentLogic {
         appointmentRepository.deleteById(id);
     }
 
-    public void updateAppointment(AppointmentDTO appointmentDTO) throws Exception {
-        if (appointmentDTO.getId() != null) {
+    public void updateAppointment(AppointmentDTO appointmentDTO)  {
+
             Appointment appointment = appointmentRepository.getReferenceById(appointmentDTO.getId());
             appointment.setDate(appointmentDTO.getDate());
             appointment.setStart_time(appointmentDTO.getStart_time());
             appointment.setEnd_time(appointmentDTO.getEnd_time());
             appointmentRepository.save(appointment);
-        } else {
-            throw new IllegalArgumentException("There is no ID specified!");
-        }
+
+
     }
 
     public Appointment relationCustomer(Long customer_id, Long appointment_id) {
