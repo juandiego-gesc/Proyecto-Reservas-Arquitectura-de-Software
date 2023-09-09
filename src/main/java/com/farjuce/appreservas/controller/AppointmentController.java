@@ -1,7 +1,9 @@
 package com.farjuce.appreservas.controller;
 
 import com.farjuce.appreservas.bd.appointment.Appointment;
+import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
+import com.farjuce.appreservas.controller.dto.EmployeeDTO;
 import com.farjuce.appreservas.logica.AppointmentLogic;
 
 import org.springframework.web.bind.annotation.*;
@@ -46,4 +48,8 @@ public class AppointmentController {
         return logic.relationCustomer(customer_id, appointment_id);
     }
 
+    @GetMapping(path = "/getMyAppointment/{id}")
+    public List<Appointment> getMyAppointment(@PathVariable Long id){
+        return logic.getMyAppointments(id);
+    }
 }

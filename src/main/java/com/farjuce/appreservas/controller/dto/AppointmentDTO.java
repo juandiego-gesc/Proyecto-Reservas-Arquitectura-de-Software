@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class AppointmentDTO {
 
     private Long id;
-    private LocalDate date;
+    private String date;
     private String start_time;
     private String end_time;
     private String state;

@@ -19,7 +19,7 @@ public class Appointment{
     private Long appointment_id;
 
     @Column
-    private LocalDate date;
+    private String date;
 
     @Column
     private String start_time;
