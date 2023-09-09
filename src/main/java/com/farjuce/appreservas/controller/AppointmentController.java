@@ -34,13 +34,17 @@ public class AppointmentController {
     }
 
     @GetMapping(path = "/appointments/getAvaliable")
-    public List<Employee> getAvaliaAppointments(@RequestParam Long task_id, @RequestParam String start_time,
-            @RequestParam String end_time, @RequestParam String date) {
-        return logic.getAvailabilityByTimeAndTask(task_id, start_time, end_time, date);
+    public List<Employee> getAvaliableAppointments(@RequestBody AppointmentDTO appointmentDTO) {
+        return logic.getAvailabilityByTimeAndTask(
+                appointmentDTO.getTask_id(),
+                appointmentDTO.getStart_time(),
+                appointmentDTO.getEnd_time(),
+                appointmentDTO.getDate());
     }
 
-    @PostMapping(path = "/appointment/update")
-    public void updateAppointment(AppointmentDTO appointmentDTO) {
+    @PutMapping(path = "/appointment/update")
+    public void updateAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+        logic.updateAppointment(appointmentDTO);
 
     }
 

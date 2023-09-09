@@ -7,8 +7,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-    @Query(value = "SELECT * FROM appointment where customer_id = :customer_id", nativeQuery = true)
-    List<Appointment> findByCustomerId(Long customerId);
 
     @Query(value = "SELECT emp.employee_id, emp.name " +
             "FROM employee emp " +
