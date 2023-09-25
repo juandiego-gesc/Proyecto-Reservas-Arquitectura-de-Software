@@ -9,6 +9,7 @@ import com.farjuce.appreservas.bd.customer.Customer;
 import com.farjuce.appreservas.bd.customer.CustomerRepository;
 import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
+import com.farjuce.appreservas.logica.exception.DuplicatedAppointmentException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,7 +33,8 @@ public class AppointmentLogic {
         this.employeeRepository = employeeRepository;
     }
 
-    public String createAppointment(AppointmentDTO appointmentDTO) {
+    public Appointment createAppointment(AppointmentDTO appointmentDTO) {
+
 
         String dateInString = appointmentDTO.getDate().toString();
         List<Employee> availability = getAvailabilityByTimeAndTask(appointmentDTO.getTask_id(),
@@ -43,14 +45,14 @@ public class AppointmentLogic {
             appointment.setDate(appointmentDTO.getDate());
             appointment.setStart_time(appointmentDTO.getStart_time());
             appointment.setEnd_time(appointmentDTO.getEnd_time());
-            appointment.setState(appointmentDTO.getState());
+            appointment.setState("Active");
             appointment.setCustomer(customerRepository.getReferenceById(appointmentDTO.getCustomer_id()));
             appointment.setEmployee(employeeRepository.getReferenceById(appointmentDTO.getEmployee_id()));
             appointment.setTask(taskRepository.getReferenceById(appointmentDTO.getTask_id()));
             appointmentRepository.save(appointment);
-            return "Appointment booked";
+            return appointment;
         } else {
-            return "Appointment not booked, around that time is already booked";
+            throw new  DuplicatedAppointmentException();
         }
     }
 
