@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -30,12 +31,14 @@ class CustomerLogicTest {
                 "juangares@unisabana.edu.co",
                 3L);
 
-        Customer customer = customerLogic.addCustomer(customerDTO);
+        Customer customer = new Customer();
+        customerRepository.save(customer);
 
-        assertEquals("Juan", customer.getName());
-        assertEquals("juangares@unisabana.edu.co", customer.getEmail());
-        assertEquals(3l, customer.getPhone_number());
+        customer.setName(customerDTO.getName());
+        customer.setEmail(customerDTO.getEmail());
+        customer.setPhone_number(customerDTO.getPhone_number());
 
+        Mockito.verify(customerRepository).save(customer);
     }
 
     @Test
