@@ -25,14 +25,11 @@ class CustomerLogicTest {
 
     @Test
     void Given_customer_When_added_Then_save() {
-        CustomerDTO customerDTO = new CustomerDTO(
-                "Juan",
-                "juangares@unisabana.edu.co",
-                3L);
+        CustomerDTO customerDTO = new CustomerDTO("Juan", "juangares@unisabana.edu.co", 3L);
+
+        customerLogic.addCustomer(customerDTO);
 
         Customer customer = new Customer();
-        customerRepository.save(customer);
-
         customer.setName(customerDTO.getName());
         customer.setEmail(customerDTO.getEmail());
         customer.setPhone_number(customerDTO.getPhone_number());
