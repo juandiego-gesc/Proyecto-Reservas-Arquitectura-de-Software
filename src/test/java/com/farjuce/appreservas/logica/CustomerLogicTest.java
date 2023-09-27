@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 @ActiveProfiles(profiles = "test")
@@ -42,6 +41,10 @@ class CustomerLogicTest {
     }
 
     @Test
-    void getAllCustomers() {
+    void Given_customers_When_get_all_customers_Then_return_all_customers() {
+
+        customerLogic.getAllCustomers();
+        verify(customerRepository).findAll();
+
     }
 }
