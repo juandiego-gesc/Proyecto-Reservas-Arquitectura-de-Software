@@ -21,10 +21,12 @@ public class CustomerController {
     }
 
     @PostMapping(path = "/customer/add")
-    public boolean saveCustomer(@RequestBody CustomerDTO customerDTO) {
+    public String saveCustomer(@RequestBody CustomerDTO customerDTO) {
 
+        String message = "Customer created";
         logic.addCustomer(customerDTO);
-        return true;
+
+        return message;
     }
 
     @GetMapping(path = "/customer/getAll")
