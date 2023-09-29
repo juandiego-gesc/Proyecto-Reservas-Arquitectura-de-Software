@@ -16,6 +16,8 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
+
 @ActiveProfiles(profiles = "test")
 @ExtendWith(MockitoExtension.class)
 class TaskLogicTest {
@@ -49,7 +51,28 @@ class TaskLogicTest {
 
     @Test
     void Given_tasks_When_get_all_tasks_Then_return_all_tasks(){
-        taskLogic.getAllTasks();
-        verify(taskRepository).findAll();
+        List<TaskDTO> tasksDTO = new ArrayList<>();
+        List<Task> tasks = new ArrayList<>();
+
+        TaskDTO taskDTO1 = new TaskDTO("Test Task 1", "Test Description 1", 20, 50);
+        TaskDTO taskDTO2 = new TaskDTO("Test Task 2", "Test Description 2", 40, 100);
+        tasksDTO.add(taskDTO1);
+        tasksDTO.add(taskDTO2);
+        taskLogic.addTask(tasksDTO);
+
+        for (TaskDTO taskDTO: tasksDTO){
+            Task task = new Task();
+            task.setName(taskDTO.getName());
+            task.setDescription(taskDTO.getDescription());
+            task.setDuration(taskDTO.getDuration());
+            task.setPrice(taskDTO.getPrice());
+            tasks.add(task);
+        }
+
+        Mockito.when(taskRepository.findAll()).thenReturn(tasks);
+
+        List<Task> tasksReturned = taskLogic.getAllTasks();
+        Mockito.verify(taskRepository).findAll();
+        assertEquals("Lists size Test",tasksDTO.size(),tasksReturned.size());
     }
 }
