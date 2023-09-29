@@ -33,4 +33,5 @@ public class CustomerController {
     public List<Customer> getCustomer() {
         return logic.getAllCustomers();
     }
+
 }
