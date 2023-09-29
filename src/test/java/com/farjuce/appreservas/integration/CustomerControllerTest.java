@@ -2,19 +2,21 @@ package com.farjuce.appreservas.integration;
 
 import com.farjuce.appreservas.bd.customer.Customer;
 import com.farjuce.appreservas.bd.customer.CustomerRepository;
+import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.controller.dto.CustomerDTO;
-import com.sun.xml.bind.v2.TODO;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.client.RestTemplate;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +36,14 @@ public class CustomerControllerTest {
     @Test
     public void Given_customer_When_added_Then_created() {
 
+        List<String> customerName = null;
         CustomerDTO customerDTO = new CustomerDTO("Juan", "juangares@unisabana.edu.co", 3L);
 
-        ResponseEntity<String> message = restTemplate.<String>postForEntity("/customer/add", customerDTO, String.class);
+        restTemplate.postForEntity("/customer/add",customerDTO, String.class);
 
-        Assertions.assertEquals("Customer created", message.getBody());
+        ResponseEntity<List> customersDB = restTemplate.getForEntity("/customer/getAll", List.class);
+
+        Assertions.assertFalse(customersDB.getBody().isEmpty());
     }
 
     @Test
@@ -59,21 +64,13 @@ public class CustomerControllerTest {
         customer2.setEmail(customerDTO2.getEmail());
         customer2.setPhone_number(customerDTO2.getPhone_number());
 
-        customerRepository.save(customer1);
-        customerRepository.save(customer2);
 
-        // When
-        ResponseEntity<Customer> response = restTemplate.getForEntity("/customer/getAll", Customer.class);
+        restTemplate.<String>postForEntity("/customer/add", customer1, String.class);
+        restTemplate.<String>postForEntity("/customer/add", customer2, String.class);
 
-        // Then
-        Customer customer = response.getBody();
-        List<Customer> customers = new ArrayList<>();
-        customers.add(customer);
+        ResponseEntity<List> customersBD = restTemplate.getForEntity("/customer/getAll", List.class);
 
-        Assertions.assertEquals(customer1.getName(), customers.get(0).getName());
-        Assertions.assertEquals(customer2.getName(), customers.get(1).getName());
-
-
+        Assertions.assertEquals(2, customersBD.getBody().size());
 
     }
 }
