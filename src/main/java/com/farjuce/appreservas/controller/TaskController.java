@@ -15,7 +15,7 @@ public class TaskController {
         this.logic = logic;
     }
 
-    @PostMapping(path = "/tasks/add")
+    @PostMapping(path = "/task/add")
     public boolean saveTask(@RequestBody List<TaskDTO> taskDTOs) {
         logic.addTask(taskDTOs);
         return true;
