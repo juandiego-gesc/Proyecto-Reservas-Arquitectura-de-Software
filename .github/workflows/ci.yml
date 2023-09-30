@@ -21,22 +21,19 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
-      - name: Ejecutando pruebas y Jacoco
-        run: |
-          ./gradlew test
-          ./gradlew jacocoTestReport
 
-      - name: Guardando Reporte de Jacoco
-        uses: actions/upload-artifact@v2
+      - name: Generate JaCoCo badge
+        id: jacoco
+        uses: cicirello/jacoco-badge-generator@v2
         with:
-          name: jacoco-report
-          path: build/reports/jacoco/test/html
+            badges-directory: badges
+            generate-branches-badge: true
+            generate-summary: true
+            jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
 
-      - name: Ejecutar pruebas con Pitest
-        run: ./gradlew pitest
-
-      - name: Publicar informe de Pitest como artefacto
-        uses: actions/upload-artifact@v2
+      - name: Generate Pitest badge
+        id: pitest
+        uses: cicirello/pitest-badge-generator@v2
         with:
-          name: pitest-report
-          path: build/reports/pitest
+          badges-directory: badges
+          pitest-mutations-directory: target/pit-reports
