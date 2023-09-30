@@ -5,6 +5,7 @@ import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.TaskDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,15 +17,17 @@ public class TaskLogic {
         this.taskRepository = taskRepository;
     }
 
-    public void addTask(List<TaskDTO> taskDTOs) {
+    public ArrayList<Task> addTask(List<TaskDTO> taskDTOs) {
+        ArrayList<Task> tasks = new ArrayList<>();
         for (TaskDTO taskDTO : taskDTOs) {
             Task task = new Task();
             task.setName(taskDTO.getName());
             task.setDescription(taskDTO.getDescription());
             task.setDuration(taskDTO.getDuration());
             task.setPrice(taskDTO.getPrice());
-            taskRepository.save(task);
+            tasks.add(taskRepository.save(task));
         }
+        return tasks;
 
     }
 

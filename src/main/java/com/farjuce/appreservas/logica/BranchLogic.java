@@ -14,7 +14,7 @@ public class BranchLogic {
         this.repository = repository;
     }
 
-    public void addBranch(BranchDTO branchDTO) {
+    public Branch addBranch(BranchDTO branchDTO) {
 
         Branch branch = new Branch();
 
@@ -24,7 +24,8 @@ public class BranchLogic {
         branch.setOpening_time(branchDTO.getOpening_time());
         branch.setClosure_time(branchDTO.getClosure_time());
 
-        repository.save(branch);
+
+        return repository.save(branch);
     }
 
 }

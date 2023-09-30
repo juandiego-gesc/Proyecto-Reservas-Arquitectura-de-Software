@@ -12,18 +12,18 @@ public class AppointmentDTO {
     private Long id;
 
 
-    @NonNull
+    @NotNull
     private String date;
-    @NonNull
+    @NotNull
     private String start_time;
-    @NonNull
+    @NotNull
     private String end_time;
-    @NonNull
+    @NotNull
     private String state;
-    @NonNull
+    @NotNull
     private Long customer_id;
-    @NonNull
+    @NotNull
     private Long employee_id;
-    @NonNull
+    @NotNull
     private Long task_id;
 }

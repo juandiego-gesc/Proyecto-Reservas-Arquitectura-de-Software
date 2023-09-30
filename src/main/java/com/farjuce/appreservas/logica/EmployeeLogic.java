@@ -19,11 +19,12 @@ public class EmployeeLogic {
         this.taskRepository = taskRepository;
     }
 
-    public void addEmployee(EmployeeDTO employeeDTO) {
+    public Employee addEmployee(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         employee.setName(employeeDTO.getName());
         employee.setTask(taskRepository.getReferenceById(employeeDTO.getTask_id()));
         employeeRepository.save(employee);
+        return employee;
     }
 
     public List<Employee> getAllEmployees() {

@@ -9,11 +9,13 @@ import com.farjuce.appreservas.bd.customer.Customer;
 import com.farjuce.appreservas.bd.customer.CustomerRepository;
 import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
+import com.farjuce.appreservas.logica.exception.AppointmentNotAvailableException;
 import com.farjuce.appreservas.logica.exception.DuplicatedAppointmentException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class AppointmentLogic {
@@ -52,7 +54,7 @@ public class AppointmentLogic {
             appointmentRepository.save(appointment);
             return appointment;
         } else {
-            throw new  DuplicatedAppointmentException();
+            throw new AppointmentNotAvailableException();
         }
     }
 
@@ -82,29 +84,6 @@ public class AppointmentLogic {
 
     }
 
-    public Appointment relationCustomer(Long customer_id, Long appointment_id) {
-
-        Appointment appointment = appointmentRepository.findById(appointment_id).get();
-        Customer customer = customerRepository.findById(customer_id).get();
-        appointment.setCustomer(customer);
-        return appointmentRepository.save(appointment);
-    }
-
-    public Appointment relationEmployee(Long employee_id, Long appointment_id) {
-        Appointment appointment = appointmentRepository.findById(appointment_id).get();
-        Employee employee = employeeRepository.findById(employee_id).get();
-        appointment.setEmployee(employee);
-        return appointmentRepository.save(appointment);
-    }
-
-    public Appointment relationTask(Long task_id, Long appointment_id) {
-
-        Appointment appointment = appointmentRepository.findById(appointment_id).get();
-        Task task = taskRepository.findById(task_id).get();
-        appointment.setTask(task);
-        return appointmentRepository.save(appointment);
-    }
-
     public List<Appointment> getAllAppointments() {
         return appointmentRepository.findAll();
     }
@@ -115,7 +94,7 @@ public class AppointmentLogic {
         List<Appointment> appointments = appointmentRepository.findAll();
         for (Appointment appointment : appointments) {
 
-            if (appointment.getCustomer().getCustomer_id() == id) {
+            if (Objects.equals(appointment.getCustomer().getCustomer_id(), id)) {
                 myAppointment.add(appointment);
 
             }
