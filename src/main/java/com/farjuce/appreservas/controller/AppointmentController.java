@@ -20,7 +20,11 @@ public class AppointmentController {
 
     @PostMapping(path = "/appointment/create")
     public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
-        return logic.createAppointment(appointmentDTO);
+        try {
+            return "Appointment created with id: " + logic.createAppointment(appointmentDTO).getAppointment_id();
+        } catch (Exception e) {
+            return "Appointment not created: " + e.getMessage();
+        }
     }
 
     @GetMapping(path = "/getMyAppointment/{id}")

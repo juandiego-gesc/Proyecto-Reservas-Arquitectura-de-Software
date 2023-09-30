@@ -21,3 +21,22 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
+      - name: Ejecutando pruebas y Jacoco
+        run: |
+          ./gradlew test
+          ./gradlew jacocoTestReport
+
+      - name: Guardando Reporte de Jacoco
+        uses: actions/upload-artifact@v2
+        with:
+          name: jacoco-report
+          path: build/reports/jacoco/test/html
+
+      - name: Ejecutar pruebas con Pitest
+        run: ./gradlew pitest
+
+      - name: Publicar informe de Pitest como artefacto
+        uses: actions/upload-artifact@v2
+        with:
+          name: pitest-report
+          path: build/reports/pitest

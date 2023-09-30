@@ -17,7 +17,7 @@ public class CustomerLogic {
         this.customerRepository = customerRepository;
     }
 
-    public void addCustomer(CustomerDTO customerDTO) {
+    public Customer addCustomer(CustomerDTO customerDTO) {
 
         Customer customer = new Customer();
 
@@ -26,6 +26,7 @@ public class CustomerLogic {
         customer.setPhone_number(customerDTO.getPhone_number());
 
         customerRepository.save(customer);
+        return customer;
     }
 
     public List<Customer> getAllCustomers() {
