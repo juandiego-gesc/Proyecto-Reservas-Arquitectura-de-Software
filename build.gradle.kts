@@ -36,6 +36,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
 }
 
 tasks.withType<Test> {
@@ -43,9 +44,7 @@ tasks.withType<Test> {
 }
 
 jacoco {
-
     toolVersion = "0.8.8"
-
 }
 
 tasks.test {
@@ -66,14 +65,14 @@ tasks.jacocoTestReport {
     )
 
     reports {
-
         csv.required.set(true)
-
     }
 }
 
 pitest {
     junit5PluginVersion = "1.0.0"
     excludedClasses = setOf("com.farjuce.appreservas.controller.dto.**",
-                            "com.farjuce.appreservas.bd.**")
+            "com.farjuce.appreservas.bd.**")
 }
+
+

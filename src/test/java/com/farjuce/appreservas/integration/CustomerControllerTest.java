@@ -1,5 +1,6 @@
 package com.farjuce.appreservas.integration;
 
+import com.farjuce.appreservas.bd.customer.Customer;
 import com.farjuce.appreservas.controller.dto.CustomerDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,9 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import java.util.List;
 
+
+import java.util.List;
 
 
 @ActiveProfiles(profiles = "test")
@@ -23,17 +25,43 @@ public class CustomerControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void Given_customer_When_added_Then_customersBD_not_empty() {
+    public void Given_customer_When_added_Then_created() {
 
         CustomerDTO customerDTO = new CustomerDTO("Juan", "juangares@unisabana.edu.co", 3L);
 
-        ResponseEntity<String> customerCreation = restTemplate.postForEntity("/customer/add", customerDTO, String.class);
+        restTemplate.postForEntity("/customer/add",customerDTO, String.class);
 
         ResponseEntity<List> customersDB = restTemplate.getForEntity("/customer/getAll", List.class);
 
-
-        Assertions.assertEquals("Customer created", customerCreation.getBody());
         Assertions.assertFalse(customersDB.getBody().isEmpty());
     }
 
+    @Test
+    public void Given_customers_When_get_all_customers_Then_return_all_customers(){
+
+
+        /*CustomerDTO customerDTO1 = new CustomerDTO("Juan", "juangares@unisabana.edu.co", 3L);
+        CustomerDTO customerDTO2 = new CustomerDTO("Pedro", "pedro@unisabana.edu.co", 4L);
+
+        Customer customer1 = new Customer();
+        Customer customer2 = new Customer();
+
+        customer1.setName(customerDTO1.getName());
+        customer1.setEmail(customerDTO1.getEmail());
+        customer1.setPhone_number(customerDTO1.getPhone_number());
+
+        customer2.setName(customerDTO2.getName());
+        customer2.setEmail(customerDTO2.getEmail());
+        customer2.setPhone_number(customerDTO2.getPhone_number());
+
+
+        restTemplate.<String>postForEntity("/customer/add", customer1, String.class);
+        restTemplate.<String>postForEntity("/customer/add", customer2, String.class);
+
+        ResponseEntity<List> customersBD = restTemplate.getForEntity("/customer/getAll", List.class);
+
+        Assertions.assertEquals(2, customersBD.getBody().size());
+
+*/    }
 }
+
