@@ -16,17 +16,11 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-<<<<<<< Updated upstream
-          java-version: '11'
-=======
           java-version: '17'
->>>>>>> Stashed changes
       - name: Compilando mi proyecto
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
-<<<<<<< Updated upstream
-=======
       - name: Ejecutando pruebas y Jacoco
         run: |
           ./gradlew test
@@ -46,5 +40,3 @@ jobs:
         with:
           name: pitest-report
           path: build/reports/pitest
-
->>>>>>> Stashed changes
