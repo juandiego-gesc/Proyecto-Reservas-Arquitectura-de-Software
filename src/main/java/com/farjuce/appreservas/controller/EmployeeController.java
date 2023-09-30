@@ -1,9 +1,7 @@
 package com.farjuce.appreservas.controller;
 
 import com.farjuce.appreservas.bd.employee.Employee;
-import com.farjuce.appreservas.bd.employee.EmployeeRepository;
 import com.farjuce.appreservas.controller.dto.EmployeeDTO;
-import com.farjuce.appreservas.logica.AppointmentLogic;
 import com.farjuce.appreservas.logica.EmployeeLogic;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +18,7 @@ public class EmployeeController {
         this.logic = logic;
     }
 
-    @GetMapping(path = "/employees/getall")
+    @GetMapping(path = "/employees/getAll")
     public List<Employee> getAllEmployeesEmployees() {
         return logic.getAllEmployees();
     }

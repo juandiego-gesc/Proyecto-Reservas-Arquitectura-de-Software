@@ -1,6 +1,6 @@
 package com.farjuce.appreservas.integration;
 
-import com.farjuce.appreservas.controller.dto.CustomerDTO;
+import com.farjuce.appreservas.controller.dto.TaskDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,30 +10,33 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import java.util.List;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @ActiveProfiles(profiles = "test")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CustomerControllerTest {
+class TaskControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
-    public void Given_customer_When_added_Then_customersBD_not_empty() {
+    void Given_task_When_add_task_Then_check_taskDB_is_not_empty() {
+        List<TaskDTO> tasks = new ArrayList<>();
+        TaskDTO taskDTO = new TaskDTO("Task", "Test Task", 2, 1);
+        tasks.add(taskDTO);
 
-        CustomerDTO customerDTO = new CustomerDTO("Juan", "juangares@unisabana.edu.co", 3L);
+        ResponseEntity<Boolean> taskCreation = restTemplate.postForEntity("/task/add", tasks, Boolean.class);
 
-        ResponseEntity<String> customerCreation = restTemplate.postForEntity("/customer/add", customerDTO, String.class);
+        ResponseEntity<List> tasksDB = restTemplate.getForEntity("/task/getAll", List.class);
 
-        ResponseEntity<List> customersDB = restTemplate.getForEntity("/customer/getAll", List.class);
+        Assertions.assertTrue(taskCreation.getBody());
 
-
-        Assertions.assertEquals("Customer created", customerCreation.getBody());
-        Assertions.assertFalse(customersDB.getBody().isEmpty());
+        Assertions.assertFalse(tasksDB.getBody().isEmpty());
     }
 
+    
 }
