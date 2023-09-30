@@ -51,7 +51,8 @@ class EmployeeControllerTest {
 
         ResponseEntity<List> employeesDB = restTemplate.getForEntity("/employees/getAll", List.class);
 
-        Assertions.assertEquals(employeesDB.getBody().size(), 2);
+        //3 because the first employee is added in the first Test
+        Assertions.assertEquals(employeesDB.getBody().size(), 3);
     }
 
 

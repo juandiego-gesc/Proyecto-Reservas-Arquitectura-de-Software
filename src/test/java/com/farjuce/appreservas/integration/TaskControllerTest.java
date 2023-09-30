@@ -36,18 +36,4 @@ class TaskControllerTest {
         Assertions.assertFalse(tasksDB.getBody().isEmpty());
     }
 
-    @Test
-    void Given_tasks_When_get_all_task_Then_size_retrieved_equals_size_from_tasks(){
-       /* List<TaskDTO> tasks = new ArrayList<>();
-        TaskDTO taskDTO = new TaskDTO("Task", "Test Task", 2, 1);
-        TaskDTO taskDTO1 = new TaskDTO("Task1", "Test Task1", 2, 1);
-        tasks.add(taskDTO);
-        tasks.add(taskDTO1);
-
-        restTemplate.postForEntity("/task/add", tasks, String.class);
-
-        ResponseEntity<List> tasksDB = restTemplate.getForEntity("/task/getAll", List.class);
-
-        Assertions.assertEquals(tasksDB.getBody().size(), 2);*/
-    }
 }
