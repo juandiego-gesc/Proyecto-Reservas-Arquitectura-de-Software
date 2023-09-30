@@ -95,6 +95,25 @@ class AppointmentLogicTest {
     }
 
     @Test
+    public void Given_no_employees_available_When_creating_new_appointment_Then_throw_AppointmentNotAvailableException() {
+        AppointmentDTO appointmentDTO = new AppointmentDTO("2021-05-05",
+            "10:00:00",
+            "11:00:00",
+            "Active",
+            1L,
+            1L,
+            1L);
+
+        List<Employee> availability = new ArrayList<>();
+
+
+        when(appointmentRepository.findAvailableEmployees(any(), any(), any(), any())).thenReturn(new ArrayList<>());
+        when(employeeRepository.findAllById(any())).thenReturn(availability);
+
+        Assertions.assertThrows(AppointmentNotAvailableException.class, () -> appointmentLogic.createAppointment(appointmentDTO));
+    }
+
+    @Test
     void Given_task_id_start_time_end_time_and_date_When_getAvailabilityByTimeAndTask_Then_return_list_of_available_employees() {
 
 
@@ -159,30 +178,24 @@ class AppointmentLogicTest {
 
     @Test
     public void getAllAppointments_When_getAllAppointmentsIsCalled_Then_returnAllAppointments() {
-        // Given
         List<Appointment> appointments = new ArrayList<>();
         appointments.add(new Appointment());
         appointments.add(new Appointment());
 
         when(appointmentRepository.findAll()).thenReturn(appointments);
 
-        // When
         List<Appointment> result = appointmentLogic.getAllAppointments();
 
-        // Then
         Assertions.assertNotNull(result);
         Assertions.assertEquals(2, result.size());
     }
 
     @Test
     public void getMyAppointments_Given_a_CustomerId_When_getMyAppointments_is_called_Then_return_my_appointments() {
-        // Given
         Long customerId = 1L;
 
-        // When
         List<Appointment> myAppointments = appointmentLogic.getMyAppointments(customerId);
 
-        // Then
         List<Appointment> allAppointments = appointmentRepository.findAll();
 
         List<Appointment> expectedAppointments = new ArrayList<>();
@@ -193,5 +206,16 @@ class AppointmentLogicTest {
         }
 
         assertEquals(expectedAppointments, myAppointments);
+    }
+
+    @Test
+    public void getMyAppointments_When_IdIsNull_Then_return_empty_list() {
+
+        Long id = null;
+
+        List<Appointment> myAppointments = appointmentLogic.getMyAppointments(id);
+
+        Assertions.assertNotNull(myAppointments);
+        Assertions.assertEquals(0, myAppointments.size());
     }
 }

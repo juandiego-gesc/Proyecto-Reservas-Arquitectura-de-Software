@@ -59,7 +59,7 @@ tasks.jacocoTestReport {
             files(classDirectories.files.map {
                 fileTree(it) {
                     exclude("com/farjuce/appreservas/controller/dto/",
-                            "com/farjuce/appreservas/bd")
+                            "com/farjuce/appreservas/bd", "com/farjuce/appreservas/logica/exception")
                 }
             })
     )
