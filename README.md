@@ -1,5 +1,5 @@
 # Proyecto Reservas
-
+## Cuenta con Mutation Test y Jacoco
 ## Integrantes:
 - Carlos Farouk Abdalá Rincón
 - César Felipe Giraldo Mora
