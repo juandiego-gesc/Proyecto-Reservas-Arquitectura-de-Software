@@ -31,9 +31,11 @@ jobs:
             generate-summary: true
             jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
 
-      - name: Generate Pitest badge
-        id: pitest
-        uses: cicirello/pitest-badge-generator@v2
+      - name: Ejecutar pruebas con Pitest
+        run: ./gradlew pitest
+
+      - name: Publicar informe de Pitest como artefacto
+        uses: actions/upload-artifact@v2
         with:
-          badges-directory: badges
-          pitest-mutations-directory: target/pit-reports
+          name: pitest-report
+          path: build/reports/pitest
