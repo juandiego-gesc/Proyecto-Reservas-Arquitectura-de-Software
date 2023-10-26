@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  appreservas:
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - mysql
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: reservas_arqui
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
