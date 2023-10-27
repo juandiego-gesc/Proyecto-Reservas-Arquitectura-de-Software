@@ -4,6 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("info.solidsoft.pitest") version "1.9.0"
     jacoco
+    id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "beyond.gilded.rose"
@@ -74,5 +75,12 @@ pitest {
     excludedClasses = setOf("com.farjuce.appreservas.controller.dto.**",
             "com.farjuce.appreservas.bd.**")
 }
+
+sonarqube {
+    properties {
+        property("sonar.projectName", "appreservas")
+    }
+}
+
 
 
