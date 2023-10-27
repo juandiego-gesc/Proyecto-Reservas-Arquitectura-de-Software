@@ -17,25 +17,43 @@ Para poder implementar TLS par poder levantar la API con HTTPS, se deben seguir 
 
 1. Abrir terminal en el proyecto
 2. Ya en el terminal se debe colocar el siguiente comando:
- ```keytool -genkey -alias nombre-del-proyecto -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 365```
+ ```keytool -genkey -alias nombre-del-proyecto -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore ubicacion-del-archivo/nombre-archivo.p12  -validity 365```
 . Este comando nos indica además de lo explicado al inicio de la sección una tiempo de validez, el nombre del archivo y un tamaño de clave en bits, en este caso 2048.
 3. Si el comando está bien digitado, en el mismo terminal nos pedirá crear una contraseña para el certificado y llenar algunos datos necesarios para la generación del mismo.
 4. Después de diligenciar estos datos, se creara el archivo que se usa para almacenar los certificados digitales y claves privadas, por eso mismo, será de tipo p.12. En este caso el archivo se llamará ```keystore.12```.
-5. Este paso es opcional, es recomendable pasar el nuevo archivo a la carpeta resources junto con los application.properties para organizar el proyecto.
-6. A continuación se debe poner en el application.properties los siguiente códgos:
+5. continuación se debe poner en el application.properties los siguiente códgos:
     ``` 
-    server.ssl.key-store=classpath:nombre-del-archivo.p12
+    server.ssl.enabled=true
+    server.ssl.key-store=classpath:nombre-archivo.p12
     server.ssl.key-store-password=contrasena-establecida-anteriormente
     server.ssl.key-store-type=tipo-de-almacenamiento
     server.ssl.key-alias=nombre-del-proyecto
     ```
    Para el caso del proyecto:
     ``` 
-    server.ssl.key-store=classpath:keystore.p12
-    server.ssl.key-store-password=ProyectoReservasContrasena
+    server.ssl.enabled=true
+    server.ssl.key-store=classpath:key_store.p12
+    server.ssl.key-store-password=AppReservas
     server.ssl.key-store-type=PKCS12
-    server.ssl.key-alias=ProyectoReservas
+    server.ssl.key-alias=AppReservasKeyStore
     ```
+6. Seguido de esto, debemos generar el certificado, esto lo haremos con los siguientes comandos:
+    ```keytool -exportcert -keystore  ubicacion-del-archivo/nombre-archivo.p12 -storepass contraseña -alias nombre-del-proyecto -rfc -file  ubicacion-del-archivo/nombre-certificado.pem```
+7. Debemos configurar el certificado para establecer un trustStore con nuestro keyStore, esto se hace de la siguiente manera:
+   ```keytool -import -file ubicacion-del-archivo/nombre-certificado.pem` -alias nombre-del-proyecto -keystore ubicacion-del-archivo/nombre-de-truststore.jks```
+8. Por último debemos colocar la informacion tanto del certificado como del TrustStore en el application properties, a continuación, el ejemplo con como se hizo en el proyecto
+    ```
+    server.ssl.trust-store=classpath:AppReservasTrustStore.jks
+    server.ssl.trust-store-password=AppReservas
+    server.ssl.trust-store-type=JKS
+    server.ssl.trust-certificate=classpath:public-certificate.pem
+    server.ssl.trust-certificate-private-key= classpath:public-certificate.pem
+    ```
+   
+Es importante recordar que en el application properties de Tests, es necesario poner únicamente este comando:
+```server.ssl.enabled=false```
+De esta manera, el ssl no será tenido en cuenta para el entorno de pruebas.
+
 Después de estos pasos, ya podemos ver la funcionalidad de TLS implementada en el proyecto. Si tratamos de ingresar a algun End Point del proyecto con el protocolo HTTP, el navegador nos mostrará que no se logro establecer la conexión con el sitio. Si le agregamos la "s" para comenzar a usar el protocolo HTTPS, puede que nos deje entrar y nos diga que el sitio no es seguro, o que si tenemos algún antivirus no nos permita ingresar al End Point.
 
 De esta manera podemos corroborar el uso de HTTPS para levantar el API.
