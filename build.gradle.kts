@@ -35,6 +35,8 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.32")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation ("org.springframework.boot:spring-boot-starter-security")
+
 
     implementation("io.springfox:springfox-boot-starter:3.0.0")
 }

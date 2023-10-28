@@ -20,7 +20,7 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 
 @ActiveProfiles(profiles = "test")
-@ExtendWith(SpringExtension.class)
+@ExtendWith({SpringExtension.class})
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AppointmentControllerTest {
 
@@ -59,23 +59,5 @@ class AppointmentControllerTest {
         System.out.println(forEntity.getBody());
     }
 
-    @Test
-    void getMyAppointment() {
-    }
 
-    @Test
-    void getAllAppointments() {
-    }
-
-    @Test
-    void getAvailableAppointments() {
-    }
-
-    @Test
-    void updateAppointment() {
-    }
-
-    @Test
-    void deleteAppointment() {
-    }
 }

@@ -1,11 +1,9 @@
 package com.farjuce.appreservas.integration;
 
-import com.farjuce.appreservas.bd.brach.BranchRepository;
 import com.farjuce.appreservas.controller.dto.BranchDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;

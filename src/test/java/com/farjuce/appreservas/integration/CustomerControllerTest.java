@@ -34,6 +34,5 @@ public class CustomerControllerTest {
         Assertions.assertFalse(customersDB.getBody().isEmpty());
     }
 
-
 }
 
