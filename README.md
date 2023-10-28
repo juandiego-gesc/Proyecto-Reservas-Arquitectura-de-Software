@@ -4,6 +4,7 @@
 - César Felipe Giraldo Mora
 - Juan Diego García Escobar
 
+
 ## ¿Cómo levantar la API con https?
 
 Es importante tener en cuenta esta sección los siguientes términos:
@@ -73,7 +74,7 @@ El objetivo de este trabajo es aplicar lo aprendido en la materia en un contexto
 Para ejecutar el proyecto con éxito, siga estos pasos:
  
 
-1. **Ejecutar el Proyecto:** Ejecute el proyecto ejecutando el comando 'docker compose up' en el terminal.
+1. **Ejecutar el Proyecto:** Ejecute el proyecto ejecutando el comando 'docker compose up --build' en el terminal.
 
  
 
@@ -84,9 +85,9 @@ Para ejecutar el proyecto con éxito, siga estos pasos:
 3. **Utilice Swagger:** Utilice Swagger para explorar las diferentes rutas y endpoints disponibles en el proyecto. Apoyarse del postman, todos disponibles en Doc, Swagger proporcionará documentación  fácil de usar para interactuar con la API del proyecto.
 
 
-Como probar el proyecto:
+## Como probar el proyecto:
 1. Utilizar el archivo de postman adjunto
-2. Asegurarse de que en la sección de Basic Auth, el usuario sea "user" y la contraseña "user"
+2. Asegurarse de que en la sección de Basic Auth, el usuario sea **_"user"_** y la contraseña **_"user"_**
 
 *Para hacer una prueba rapida, utilizar las funciones relacionadas con task dado que no tienen pre requisitos de informacion.
 
