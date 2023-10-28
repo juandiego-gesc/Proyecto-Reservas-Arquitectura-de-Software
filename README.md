@@ -71,22 +71,24 @@ El objetivo de este trabajo es aplicar lo aprendido en la materia en un contexto
  
 
 Para ejecutar el proyecto con éxito, siga estos pasos:
+ 
+
+1. **Ejecutar el Proyecto:** Ejecute el proyecto ejecutando el comando 'docker compose up' en el terminal.
 
  
 
-1. **Configurar JDK 17:** Asegúrese de configurar JDK 17 como el SDK para el proyecto. Esto se puede hacer en las propiedades del proyecto.
+2. **Acceder al Swagger:** Después de ejecutar el proyecto, vaya a la dirección `https://localhost:8080` en su navegador web.
 
  
 
-2. **Ejecutar el Proyecto:** Ejecute el proyecto utilizando el IDE de su preferencia.
+3. **Utilice Swagger:** Utilice Swagger para explorar las diferentes rutas y endpoints disponibles en el proyecto. Apoyarse del postman, todos disponibles en Doc, Swagger proporcionará documentación  fácil de usar para interactuar con la API del proyecto.
 
- 
 
-3. **Acceder al Swagger:** Después de ejecutar el proyecto, vaya a la dirección `http://localhost:8080` en su navegador web.
+Como probar el proyecto:
+1. Utilizar el archivo de postman adjunto
+2. Asegurarse de que en la sección de Basic Auth, el usuario sea "user" y la contraseña "user"
 
- 
-
-4. **Utilice Swagger:** Utilice Swagger para explorar las diferentes rutas y endpoints disponibles en el proyecto. Apoyarse del postman, todos disponibles en Doc, Swagger proporcionará documentación  fácil de usar para interactuar con la API del proyecto.
+*Para hacer una prueba rapida, utilizar las funciones relacionadas con task dado que no tienen pre requisitos de informacion.
 
 ## Funcionalidades de la API:
 A continuación, se describen las principales funcionalidades de nuestra API:
