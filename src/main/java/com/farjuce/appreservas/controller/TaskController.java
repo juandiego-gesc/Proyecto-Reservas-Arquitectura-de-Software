@@ -15,13 +15,13 @@ public class TaskController {
         this.logic = logic;
     }
 
-    @PostMapping(path = "/task/add")
+    @PostMapping(path = "/app/task/add")
     public boolean saveTask(@RequestBody List<TaskDTO> taskDTOs) {
         logic.addTask(taskDTOs);
         return true;
     }
 
-    @GetMapping(path = "/task/getAll")
+    @GetMapping(path = "/app/task/getAll")
     public List<Task> getTask() {
         return logic.getAllTasks();
     }

@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("info.solidsoft.pitest") version "1.9.0"
     jacoco
-    id("org.sonarqube") version "4.4.1.3373"
+//    id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "beyond.gilded.rose"
@@ -36,6 +36,7 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.32")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation ("org.springframework.boot:spring-boot-starter-security")
 
     implementation("io.springfox:springfox-boot-starter:3.0.0")
 }
@@ -76,11 +77,11 @@ pitest {
             "com.farjuce.appreservas.bd.**")
 }
 
-sonarqube {
-    properties {
-        property("sonar.projectName", "appreservas")
-    }
-}
+//sonarqube {
+//    properties {
+//        property("sonar.projectName", "appreservas")
+//    }
+//}
 
 
 

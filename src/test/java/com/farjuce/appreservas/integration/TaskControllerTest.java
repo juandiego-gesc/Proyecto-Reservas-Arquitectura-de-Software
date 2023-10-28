@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
@@ -29,9 +31,9 @@ class TaskControllerTest {
         TaskDTO taskDTO = new TaskDTO("Task", "Test Task", 2, 1);
         tasks.add(taskDTO);
 
-        restTemplate.postForEntity("/task/add", tasks, String.class);
+        restTemplate.postForEntity("/app/task/add", tasks, String.class);
 
-        ResponseEntity<List> tasksDB = restTemplate.getForEntity("/task/getAll", List.class);
+        ResponseEntity<List> tasksDB = restTemplate.getForEntity("/app/task/getAll", List.class);
 
         Assertions.assertFalse(tasksDB.getBody().isEmpty());
     }

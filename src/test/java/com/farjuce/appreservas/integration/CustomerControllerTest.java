@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +29,9 @@ public class CustomerControllerTest {
 
         CustomerDTO customerDTO = new CustomerDTO("Juan", "juangares@unisabana.edu.co", 3L);
 
-        restTemplate.postForEntity("/customer/add",customerDTO, String.class);
+        restTemplate.postForEntity("/app/customer/add",customerDTO, String.class);
 
-        ResponseEntity<List> customersDB = restTemplate.getForEntity("/customer/getAll", List.class);
+        ResponseEntity<List> customersDB = restTemplate.getForEntity("/app/customer/getAll", List.class);
 
         Assertions.assertFalse(customersDB.getBody().isEmpty());
     }
