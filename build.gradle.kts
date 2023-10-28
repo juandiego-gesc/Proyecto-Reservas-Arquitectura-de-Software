@@ -1,9 +1,12 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     java
     id("org.springframework.boot") version "2.7.14"
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("info.solidsoft.pitest") version "1.9.0"
     jacoco
+    kotlin("jvm") version "1.7.10"
 }
 
 group = "beyond.gilded.rose"
@@ -30,15 +33,23 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("mysql:mysql-connector-java:8.0.32")
     implementation("org.modelmapper:modelmapper:2.1.1")
+
     testImplementation("com.h2database:h2:2.2.220")
     compileOnly("org.projectlombok:lombok")
     implementation("mysql:mysql-connector-java:8.0.32")
     annotationProcessor("org.projectlombok:lombok")
+
+    implementation ("org.springframework.boot:spring-boot-starter-security")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation ("org.springframework.boot:spring-boot-starter-security")
 
 
     implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation(kotlin("stdlib-jdk8"))
+
+
+
 }
 
 tasks.withType<Test> {
@@ -78,3 +89,11 @@ pitest {
 }
 
 
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
