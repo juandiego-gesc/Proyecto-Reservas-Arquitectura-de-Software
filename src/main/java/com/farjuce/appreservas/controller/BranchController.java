@@ -15,7 +15,7 @@ public class BranchController {
         this.logic = logic;
     }
 
-    @PostMapping(path = "/branch/add")
+    @PostMapping(path = "/app/branch/add")
     public boolean createBranch(@RequestBody BranchDTO branchDTO) {
         logic.addBranch(branchDTO);
         return true;

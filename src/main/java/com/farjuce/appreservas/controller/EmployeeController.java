@@ -18,12 +18,12 @@ public class EmployeeController {
         this.logic = logic;
     }
 
-    @GetMapping(path = "/employees/getAll")
+    @GetMapping(path = "/app/employees/getAll")
     public List<Employee> getAllEmployeesEmployees() {
         return logic.getAllEmployees();
     }
 
-    @PostMapping(path = "/employee/add")
+    @PostMapping(path = "/app/employee/add")
     public boolean addEmployee(@RequestBody EmployeeDTO employeeDTO) {
         logic.addEmployee(employeeDTO);
         return true;

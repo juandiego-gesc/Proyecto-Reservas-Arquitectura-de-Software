@@ -18,7 +18,7 @@ public class AppointmentController {
         this.logic = logicAppointment;
     }
 
-    @PostMapping(path = "/appointment/create")
+    @PostMapping(path = "/app/appointment/create")
     public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         try {
             return "Appointment created with id: " + logic.createAppointment(appointmentDTO).getAppointment_id();
@@ -27,29 +27,29 @@ public class AppointmentController {
         }
     }
 
-    @GetMapping(path = "/getMyAppointment/{id}")
+    @GetMapping(path = "/app/getMyAppointment/{id}")
     public List<Appointment> getMyAppointment(@PathVariable Long id) {
         return logic.getMyAppointments(id);
     }
 
-    @GetMapping(path = "/appointments/getAll")
+    @GetMapping(path = "/app/appointments/getAll")
     public List<Appointment> getAllAppointments() {
         return logic.getAllAppointments();
     }
 
-    @GetMapping(path = "/appointments/getAvailable")
+    @GetMapping(path = "/app/appointments/getAvailable")
     public List<Employee> getAvailableAppointments(@RequestParam Long task_id, @RequestParam String start_time,
             @RequestParam String end_time, @RequestParam String date) {
         return logic.getAvailabilityByTimeAndTask(task_id, start_time, end_time, date);
     }
 
-    @PutMapping(path = "/appointment/update")
+    @PutMapping(path = "/app/appointment/update")
     public void updateAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         logic.updateAppointment(appointmentDTO);
 
     }
 
-    @DeleteMapping(path = "/appointment/delete")
+    @DeleteMapping(path = "/app/appointment/delete")
     public void deleteAppointment(AppointmentDTO appointmentDTO) {
 
     }

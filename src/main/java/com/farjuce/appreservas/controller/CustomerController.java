@@ -20,7 +20,7 @@ public class CustomerController {
         this.logic = logicCustomer;
     }
 
-    @PostMapping(path = "/customer/add")
+    @PostMapping(path = "/app/customer/add")
     public String saveCustomer(@RequestBody CustomerDTO customerDTO) {
 
         String message = "Customer created";
@@ -29,7 +29,7 @@ public class CustomerController {
         return message;
     }
 
-    @GetMapping(path = "/customer/getAll")
+    @GetMapping(path = "/app/customer/getAll")
     public List<Customer> getCustomer() {
         return logic.getAllCustomers();
     }
