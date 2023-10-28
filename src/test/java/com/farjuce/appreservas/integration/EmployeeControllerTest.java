@@ -1,15 +1,11 @@
 package com.farjuce.appreservas.integration;
 
-import com.farjuce.appreservas.basicAuth.SecurityConfig;
 import com.farjuce.appreservas.controller.dto.EmployeeDTO;
 import com.farjuce.appreservas.controller.dto.TaskDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
@@ -55,8 +51,7 @@ class EmployeeControllerTest {
 
         ResponseEntity<List> employeesDB = restTemplate.getForEntity("/app/employees/getAll", List.class);
 
-        //3 because the first employee is added in the first Test
-//        Assertions.assertEquals(employeesDB.getBody().size(), 2);
+        Assertions.assertEquals(3,employeesDB.getBody().size());
     }
 
 
