@@ -7,6 +7,8 @@ import com.farjuce.appreservas.controller.dto.TaskDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
@@ -48,34 +50,14 @@ class AppointmentControllerTest {
                 1L,
                 1L);
 
-        restTemplate.postForEntity("/task/add", tasks, Boolean.class);
-        restTemplate.postForEntity("/employee/add", employeeDTO, String.class);
-        restTemplate.postForEntity("/customer/add", customerDTO, String.class);
+        restTemplate.postForEntity("/app/task/add", tasks, Boolean.class);
+        restTemplate.postForEntity("/app/employee/add", employeeDTO, String.class);
+        restTemplate.postForEntity("/app/customer/add", customerDTO, String.class);
 
 
 
-        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("/appointment/create", appointmentDTO, String.class);
-        ResponseEntity<List> forEntity = restTemplate.getForEntity("/appointments/getAll", List.class);
+        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("/app/appointment/create", appointmentDTO, String.class);
+        ResponseEntity<List> forEntity = restTemplate.getForEntity("/app/appointments/getAll", List.class);
         System.out.println(forEntity.getBody());
-    }
-
-    @Test
-    void getMyAppointment() {
-    }
-
-    @Test
-    void getAllAppointments() {
-    }
-
-    @Test
-    void getAvailableAppointments() {
-    }
-
-    @Test
-    void updateAppointment() {
-    }
-
-    @Test
-    void deleteAppointment() {
     }
 }

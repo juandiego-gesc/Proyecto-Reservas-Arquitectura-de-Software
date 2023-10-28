@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +31,7 @@ class BranchControllerTest {
     void Given_branch_When_added_Then_create_branch() {
         BranchDTO branchDTO = new BranchDTO("Juan", "Bogotá", "Sede", LocalTime.of(12,30), LocalTime.of(2,30));
 
-        ResponseEntity<Boolean> statusBranchAdd = restTemplate.postForEntity("/branch/add", branchDTO, Boolean.class);
+        ResponseEntity<Boolean> statusBranchAdd = restTemplate.postForEntity("/app/branch/add", branchDTO, Boolean.class);
 
         Assertions.assertTrue(statusBranchAdd.getBody());
 
