@@ -3,8 +3,8 @@ plugins {
     id("org.springframework.boot") version "2.7.14"
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("info.solidsoft.pitest") version "1.9.0"
-    jacoco
-//    id("org.sonarqube") version "4.4.1.3373"
+    id("jacoco")
+    id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "beyond.gilded.rose"
@@ -58,30 +58,29 @@ tasks.jacocoTestReport {
     dependsOn(tasks.test)
 
     classDirectories.setFrom(
-            files(classDirectories.files.map {
-                fileTree(it) {
-                    exclude("com/farjuce/appreservas/controller/dto/",
-                            "com/farjuce/appreservas/bd", "com/farjuce/appreservas/logica/exception")
-                }
-            })
+        files(classDirectories.files.map {
+            fileTree(it) {
+                exclude("com/farjuce/appreservas/controller/dto/",
+                    "com/farjuce/appreservas/bd", "com/farjuce/appreservas/logica/exception")
+            }
+        })
     )
 
     reports {
         csv.required.set(true)
+        xml.required.set(true)
     }
 }
 
 pitest {
     junit5PluginVersion = "1.0.0"
     excludedClasses = setOf("com.farjuce.appreservas.controller.dto.**",
-            "com.farjuce.appreservas.bd.**")
+        "com.farjuce.appreservas.bd.**")
 }
 
-//sonarqube {
-//    properties {
-//        property("sonar.projectName", "appreservas")
-//    }
-//}
-
-
-
+sonarqube {
+    properties {
+        property("sonar.projectName", "appreservas")
+        property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
+    }
+}
