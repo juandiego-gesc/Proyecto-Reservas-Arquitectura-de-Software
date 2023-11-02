@@ -24,7 +24,6 @@ public class BranchLogic {
         branch.setOpeningTime(branchDTO.getOpeningTime());
         branch.setClosureTime(branchDTO.getClosureTime());
 
-
         return repository.save(branch);
     }
 
