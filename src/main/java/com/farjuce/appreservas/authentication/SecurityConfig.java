@@ -1,4 +1,4 @@
-package com.farjuce.appreservas.basicAuth;
+package com.farjuce.appreservas.authentication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,7 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .cors().and()
-            .authorizeHttpRequests( (authorize) -> authorize
+            .authorizeHttpRequests(authorize -> authorize
                 .antMatchers("/app/**").hasRole("USER")
                 .anyRequest().authenticated()
             )

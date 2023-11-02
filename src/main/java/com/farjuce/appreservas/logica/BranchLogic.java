@@ -21,8 +21,8 @@ public class BranchLogic {
         branch.setName(branchDTO.getName());
         branch.setAddress(branchDTO.getAddress());
         branch.setType(branchDTO.getType());
-        branch.setOpening_time(branchDTO.getOpening_time());
-        branch.setClosure_time(branchDTO.getClosure_time());
+        branch.setOpeningTime(branchDTO.getOpeningTime());
+        branch.setClosureTime(branchDTO.getClosureTime());
 
 
         return repository.save(branch);

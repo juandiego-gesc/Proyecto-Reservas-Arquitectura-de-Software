@@ -13,15 +13,15 @@ public class AppointmentDTO {
     @NotNull
     private String date;
     @NotNull
-    private String start_time;
+    private String startTime;
     @NotNull
-    private String end_time;
+    private String endTime;
     @NotNull
     private String state;
     @NotNull
-    private Long customer_id;
+    private Long customerId;
     @NotNull
-    private Long employee_id;
+    private Long employeeId;
     @NotNull
-    private Long task_id;
+    private Long taskId;
 }

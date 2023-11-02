@@ -17,8 +17,8 @@ public class BranchDTO {
     @NonNull
     private String type;
     @NonNull
-    private LocalTime opening_time;
+    private LocalTime openingTime;
     @NonNull
-    private LocalTime closure_time;
+    private LocalTime closureTime;
 
 }

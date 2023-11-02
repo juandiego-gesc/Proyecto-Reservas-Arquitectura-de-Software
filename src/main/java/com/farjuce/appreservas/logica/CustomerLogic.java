@@ -23,7 +23,7 @@ public class CustomerLogic {
 
         customer.setName(customerDTO.getName());
         customer.setEmail(customerDTO.getEmail());
-        customer.setPhone_number(customerDTO.getPhone_number());
+        customer.setPhoneNumber(customerDTO.getPhoneNumber());
 
         customerRepository.save(customer);
         return customer;

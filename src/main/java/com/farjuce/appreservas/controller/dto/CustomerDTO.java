@@ -15,6 +15,6 @@ public class CustomerDTO {
     private String email;
 
     @NonNull
-    private Long phone_number;
+    private Long phoneNumber;
 
 }

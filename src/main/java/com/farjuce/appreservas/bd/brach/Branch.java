@@ -12,7 +12,7 @@ public class Branch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long branch_id;
+    private Long branchId;
 
     @Column
     private String name;
@@ -24,8 +24,8 @@ public class Branch {
     private String type;
 
     @Column
-    private LocalTime opening_time;
+    private LocalTime openingTime;
 
     @Column
-    private LocalTime closure_time;
+    private LocalTime closureTime;
 }

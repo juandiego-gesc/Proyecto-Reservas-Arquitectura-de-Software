@@ -22,7 +22,7 @@ public class EmployeeLogic {
     public Employee addEmployee(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         employee.setName(employeeDTO.getName());
-        employee.setTask(taskRepository.getReferenceById(employeeDTO.getTask_id()));
+        employee.setTask(taskRepository.getReferenceById(employeeDTO.getTaskId()));
         employeeRepository.save(employee);
         return employee;
     }

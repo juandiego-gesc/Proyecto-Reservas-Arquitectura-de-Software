@@ -21,7 +21,7 @@ public class AppointmentController {
     @PostMapping(path = "/app/appointment/create")
     public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         try {
-            return "Appointment created with id: " + logic.createAppointment(appointmentDTO).getAppointment_id();
+            return "Appointment created with id: " + logic.createAppointment(appointmentDTO).getAppointmentId();
         } catch (Exception e) {
             return "Appointment not created: " + e.getMessage();
         }
@@ -38,9 +38,9 @@ public class AppointmentController {
     }
 
     @GetMapping(path = "/app/appointments/getAvailable")
-    public List<Employee> getAvailableAppointments(@RequestParam Long task_id, @RequestParam String start_time,
-            @RequestParam String end_time, @RequestParam String date) {
-        return logic.getAvailabilityByTimeAndTask(task_id, start_time, end_time, date);
+    public List<Employee> getAvailableAppointments(@RequestParam Long taskId, @RequestParam String startTime,
+                                                   @RequestParam String endTime, @RequestParam String date) {
+        return logic.getAvailabilityByTimeAndTask(taskId, startTime, endTime, date);
     }
 
     @PutMapping(path = "/app/appointment/update")
@@ -51,6 +51,6 @@ public class AppointmentController {
 
     @DeleteMapping(path = "/app/appointment/delete")
     public void deleteAppointment(AppointmentDTO appointmentDTO) {
-
+        logic.cancelAppointment(appointmentDTO.getId());
     }
 }

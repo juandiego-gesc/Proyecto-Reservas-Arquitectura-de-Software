@@ -4,13 +4,10 @@ import com.farjuce.appreservas.bd.appointment.Appointment;
 import com.farjuce.appreservas.bd.appointment.AppointmentRepository;
 import com.farjuce.appreservas.bd.employee.Employee;
 import com.farjuce.appreservas.bd.employee.EmployeeRepository;
-import com.farjuce.appreservas.bd.task.Task;
-import com.farjuce.appreservas.bd.customer.Customer;
 import com.farjuce.appreservas.bd.customer.CustomerRepository;
 import com.farjuce.appreservas.bd.task.TaskRepository;
 import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import com.farjuce.appreservas.logica.exception.AppointmentNotAvailableException;
-import com.farjuce.appreservas.logica.exception.DuplicatedAppointmentException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -39,18 +36,18 @@ public class AppointmentLogic {
 
 
         String dateInString = appointmentDTO.getDate().toString();
-        List<Employee> availability = getAvailabilityByTimeAndTask(appointmentDTO.getTask_id(),
-                appointmentDTO.getStart_time(), appointmentDTO.getEnd_time(), dateInString);
+        List<Employee> availability = getAvailabilityByTimeAndTask(appointmentDTO.getTaskId(),
+                appointmentDTO.getStartTime(), appointmentDTO.getEndTime(), dateInString);
 
-        if (availability.stream().anyMatch(employee -> employee.getEmployee_id() == appointmentDTO.getEmployee_id())) {
+        if (availability.stream().anyMatch(employee -> employee.getEmployeeId() == appointmentDTO.getEmployeeId())) {
             Appointment appointment = new Appointment();
             appointment.setDate(appointmentDTO.getDate());
-            appointment.setStart_time(appointmentDTO.getStart_time());
-            appointment.setEnd_time(appointmentDTO.getEnd_time());
+            appointment.setStartTime(appointmentDTO.getStartTime());
+            appointment.setEndTime(appointmentDTO.getEndTime());
             appointment.setState("Active");
-            appointment.setCustomer(customerRepository.getReferenceById(appointmentDTO.getCustomer_id()));
-            appointment.setEmployee(employeeRepository.getReferenceById(appointmentDTO.getEmployee_id()));
-            appointment.setTask(taskRepository.getReferenceById(appointmentDTO.getTask_id()));
+            appointment.setCustomer(customerRepository.getReferenceById(appointmentDTO.getCustomerId()));
+            appointment.setEmployee(employeeRepository.getReferenceById(appointmentDTO.getEmployeeId()));
+            appointment.setTask(taskRepository.getReferenceById(appointmentDTO.getTaskId()));
             appointmentRepository.save(appointment);
             return appointment;
         } else {
@@ -58,8 +55,8 @@ public class AppointmentLogic {
         }
     }
 
-    public List<Employee> getAvailabilityByTimeAndTask(Long task_id, String start_time, String end_time, String date) {
-        List<Object[]> queryResult = appointmentRepository.findAvailableEmployees(task_id, date, start_time, end_time);
+    public List<Employee> getAvailabilityByTimeAndTask(Long taskId, String startTime, String endTime, String date) {
+        List<Object[]> queryResult = appointmentRepository.findAvailableEmployees(taskId, date, startTime, endTime);
 
         List<Long> employeeIds = new ArrayList<>();
         for (Object[] result : queryResult) {
@@ -77,8 +74,8 @@ public class AppointmentLogic {
 
             Appointment appointment = appointmentRepository.getReferenceById(appointmentDTO.getId());
             appointment.setDate(appointmentDTO.getDate());
-            appointment.setStart_time(appointmentDTO.getStart_time());
-            appointment.setEnd_time(appointmentDTO.getEnd_time());
+            appointment.setStartTime(appointmentDTO.getStartTime());
+            appointment.setEndTime(appointmentDTO.getEndTime());
             appointmentRepository.save(appointment);
 
 
@@ -94,7 +91,7 @@ public class AppointmentLogic {
         List<Appointment> appointments = appointmentRepository.findAll();
         for (Appointment appointment : appointments) {
 
-            if (Objects.equals(appointment.getCustomer().getCustomer_id(), id)) {
+            if (Objects.equals(appointment.getCustomer().getCustomerId(), id)) {
                 myAppointment.add(appointment);
 
             }

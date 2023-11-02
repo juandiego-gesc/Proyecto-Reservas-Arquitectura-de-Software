@@ -15,29 +15,29 @@ public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long appointment_id;
+    private Long appointmentId;
 
     @Column
     private String date;
 
     @Column
-    private String start_time;
+    private String startTime;
 
     @Column
-    private String end_time;
+    private String endTime;
 
     @Column
     private String state;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customerId")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employeeId")
     private Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "taskId")
     private Task task;
 }

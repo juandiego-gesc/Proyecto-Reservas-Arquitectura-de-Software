@@ -19,13 +19,13 @@ import java.util.List;
 @ActiveProfiles(profiles = "test")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CustomerControllerTest {
+class CustomerControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
-    public void Given_customer_When_added_Then_created() {
+    void Given_customer_When_added_Then_created() {
 
         CustomerDTO customerDTO = new CustomerDTO("Juan", "juangares@unisabana.edu.co", 3L);
 

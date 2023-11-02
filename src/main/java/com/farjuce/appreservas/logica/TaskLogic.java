@@ -17,8 +17,8 @@ public class TaskLogic {
         this.taskRepository = taskRepository;
     }
 
-    public ArrayList<Task> addTask(List<TaskDTO> taskDTOs) {
-        ArrayList<Task> tasks = new ArrayList<>();
+    public List<Task> addTask(List<TaskDTO> taskDTOs) {
+        List<Task> tasks = new ArrayList<>();
         for (TaskDTO taskDTO : taskDTOs) {
             Task task = new Task();
             task.setName(taskDTO.getName());

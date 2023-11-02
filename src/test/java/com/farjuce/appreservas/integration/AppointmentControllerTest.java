@@ -4,6 +4,7 @@ import com.farjuce.appreservas.controller.dto.AppointmentDTO;
 import com.farjuce.appreservas.controller.dto.CustomerDTO;
 import com.farjuce.appreservas.controller.dto.EmployeeDTO;
 import com.farjuce.appreservas.controller.dto.TaskDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,7 @@ class AppointmentControllerTest {
 
         ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("/app/appointment/create", appointmentDTO, String.class);
         ResponseEntity<List> forEntity = restTemplate.getForEntity("/app/appointments/getAll", List.class);
-        System.out.println(forEntity.getBody());
+
+        Assertions.assertFalse(stringResponseEntity.getBody().contains("Appointment created with id: 1"));
     }
 }

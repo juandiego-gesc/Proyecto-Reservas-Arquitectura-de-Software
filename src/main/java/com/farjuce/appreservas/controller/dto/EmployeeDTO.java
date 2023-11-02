@@ -11,6 +11,6 @@ public class EmployeeDTO {
     @NonNull
     private String name;
     @NonNull
-    private Long task_id;
+    private Long taskId;
 
 }

@@ -37,14 +37,14 @@ class EmployeeLogicTest {
     @Test
     void Given_employee_with_task_When_added_Then_save_employee() {
         Task task = new Task();
-        task.setTask_id(1L);
+        task.setTaskId(1L);
 
-        Mockito.when(taskRepository.getReferenceById(task.getTask_id())).thenReturn(task);
-        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", task.getTask_id());
+        Mockito.when(taskRepository.getReferenceById(task.getTaskId())).thenReturn(task);
+        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", task.getTaskId());
         employeeLogic.addEmployee(employeeDTO);
         Employee employee = new Employee();
         employee.setName(employeeDTO.getName());
-        employee.setTask(taskRepository.getReferenceById(task.getTask_id()));
+        employee.setTask(taskRepository.getReferenceById(task.getTaskId()));
 
         Mockito.verify(employeeRepository).save(employee);
     }
@@ -54,11 +54,11 @@ class EmployeeLogicTest {
         List<Employee> employees = new ArrayList<>();
         List<EmployeeDTO> employeesDTO = new ArrayList<>();
         Task task = new Task();
-        task.setTask_id(1L);
+        task.setTaskId(1L);
 
-        Mockito.when(taskRepository.getReferenceById(task.getTask_id())).thenReturn(task);
-        EmployeeDTO employeeDTO1 = new EmployeeDTO("Employee Name 1", task.getTask_id());
-        EmployeeDTO employeeDTO2 = new EmployeeDTO("Employee Name 2", task.getTask_id());
+        Mockito.when(taskRepository.getReferenceById(task.getTaskId())).thenReturn(task);
+        EmployeeDTO employeeDTO1 = new EmployeeDTO("Employee Name 1", task.getTaskId());
+        EmployeeDTO employeeDTO2 = new EmployeeDTO("Employee Name 2", task.getTaskId());
 
         employeesDTO.add(employeeDTO1);
         employeesDTO.add(employeeDTO2);
@@ -67,7 +67,7 @@ class EmployeeLogicTest {
             employeeLogic.addEmployee(employeeDTO);
             Employee employee = new Employee();
             employee.setName(employeeDTO.getName());
-            employee.setTask(taskRepository.getReferenceById(task.getTask_id()));
+            employee.setTask(taskRepository.getReferenceById(task.getTaskId()));
             employees.add(employee);
         }
 

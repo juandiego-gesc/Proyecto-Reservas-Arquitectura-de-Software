@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("info.solidsoft.pitest") version "1.9.0"
     jacoco
-//    id("org.sonarqube") version "4.4.1.3373"
+    id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "beyond.gilded.rose"
@@ -67,8 +67,16 @@ tasks.jacocoTestReport {
     )
 
     reports {
-        csv.required.set(true)
+        xml.required.set(true)
     }
+    sonarqube {
+        properties {
+            property("sonar.projectName", "appreservas")
+            property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
+        }
+    }
+
+
 }
 
 pitest {
@@ -77,11 +85,11 @@ pitest {
             "com.farjuce.appreservas.bd.**")
 }
 
-//sonarqube {
-//    properties {
-//        property("sonar.projectName", "appreservas")
-//    }
-//}
+sonarqube {
+    properties {
+        property("sonar.projectName", "appreservas")
+    }
+}
 
 
 
