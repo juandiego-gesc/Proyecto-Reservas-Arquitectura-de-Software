@@ -14,18 +14,18 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long employee_id;
+    private Long employeeId;
 
     @Column
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "taskId")
     @JsonManagedReference
     private Task task;
 
     @ManyToOne
-    @JoinColumn(name = "branch_id") // Nombre de la columna que relaciona Employee con Branch
+    @JoinColumn(name = "branchId") // Nombre de la columna que relaciona Employee con Branch
     private Branch branch;
 
 }

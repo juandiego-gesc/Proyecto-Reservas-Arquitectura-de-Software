@@ -1,72 +1,32 @@
 {
 	"info": {
-		"_postman_id": "0146e9db-acd4-478c-bd27-cba269f065e4",
+		"_postman_id": "b02833a9-e5e5-472c-aba4-fc737474b607",
 		"name": "ProyectoReservasArqui",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27860940",
-		"_collection_link": "https://warped-comet-282123.postman.co/workspace/New-Team-Workspace~90e8f3d5-ce03-49f7-acc6-4a11e2f28eb5/collection/27860940-0146e9db-acd4-478c-bd27-cba269f065e4?action=share&source=collection_link&creator=27860940"
+		"_exporter_id": "29410409"
 	},
 	"item": [
-		{
-			"name": "Employees",
-			"item": [
-				{
-					"name": "Get all employees",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/employees/getall",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"employees",
-								"getall"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Employee",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Harry\",\n    \"task_id\": 2\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/employee/add",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"employee",
-								"add"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
 		{
 			"name": "Tasks",
 			"item": [
 				{
 					"name": "Create tasks",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -79,13 +39,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/task/add",
-							"protocol": "http",
+							"raw": "https://localhost:8080/app/task/add",
+							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"app",
 								"task",
 								"add"
 							]
@@ -95,18 +56,311 @@
 				},
 				{
 					"name": "Get All Tasks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://localhost:8080/task/getAll",
-							"protocol": "http",
+							"raw": "https://localhost:8080/app/task/getAll",
+							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"app",
 								"task",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Branch",
+			"item": [
+				{
+					"name": "Post Branch",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Dunder Mifflin Scranton\",\n    \"address\" : \"Scranton\",\n    \"type\" : \"Paper\",\n    \"openingTime\": \"11:00:00\",\n    \"closureTime\": \"17:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8080/app/branch/add",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"branch",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Branch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"César\",\n    \"email\" : \"cesargimo@unisabana.edu.co\",\n    \"phone_number\" : 3217998691\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8080/app/branch/getAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"branch",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "Add Employee",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Farro\",\n    \"taskId\": 1,\n    \"branchId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8080/app/employee/add",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"employee",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all employees",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8080/app/employees/getAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"employees",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Post Custumer",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Cesar Gimo\",\n    \"email\" : \"Cexar@unisabana.edu.co\",\n    \"phoneNumber\" : 3217998694\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8080/app/customer/add",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"customer",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8080/app/customer/getAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"customer",
 								"getAll"
 							]
 						}
@@ -120,36 +374,59 @@
 			"item": [
 				{
 					"name": "Get Availability",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://localhost:8080/appointments/getAvailable?task_id=1&date=2023-09-08&start_time=15:00:00&end_time=16:00:00",
-							"protocol": "http",
+							"raw": "https://localhost:8080/app/appointments/getAvailable?taskId=1&date=2023-11-04&startTime=14:00:00&endTime=15:00:00",
+							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"app",
 								"appointments",
 								"getAvailable"
 							],
 							"query": [
 								{
-									"key": "task_id",
+									"key": "taskId",
 									"value": "1"
 								},
 								{
 									"key": "date",
-									"value": "2023-09-08"
+									"value": "2023-11-04"
 								},
 								{
-									"key": "start_time",
+									"key": "startTime",
+									"value": "14:00:00"
+								},
+								{
+									"key": "endTime",
 									"value": "15:00:00"
-								},
-								{
-									"key": "end_time",
-									"value": "16:00:00"
 								}
 							]
 						}
@@ -159,11 +436,26 @@
 				{
 					"name": "Create Appointment",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"date\" : \"2023-09-08\",\n\n    \"start_time\" : \"02:00:00\",\n\n    \"end_time\" : \"04:00:00\",\n\n    \"state\" : \"Active\",\n\n    \"customer_id\" : 1,\n\n    \"task_id\" : 2,\n\n    \"employee_id\": 3\n\n}",
+							"raw": "{\n\n    \"date\" : \"2023-11-04\",\n\n    \"startTime\" : \"14:00:00\",\n\n    \"endTime\" : \"15:00:00\",\n\n    \"state\" : \"Active\",\n\n    \"customerId\" : 1,\n\n    \"taskId\" : 1,\n\n    \"employeeId\": 3\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,13 +463,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/appointment/create",
-							"protocol": "http",
+							"raw": "https://localhost:8080/app/appointment/create",
+							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"app",
 								"appointment",
 								"create"
 							]
@@ -188,16 +481,32 @@
 				{
 					"name": "Get All Appointments",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/appointments/getAll",
-							"protocol": "http",
+							"raw": "https://localhost:8080/app/appointments/getAll",
+							"protocol": "https",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"app",
 								"appointments",
 								"getAll"
 							]

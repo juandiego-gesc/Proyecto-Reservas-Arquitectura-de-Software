@@ -32,7 +32,7 @@ class CustomerLogicTest {
         Customer customer = new Customer();
         customer.setName(customerDTO.getName());
         customer.setEmail(customerDTO.getEmail());
-        customer.setPhone_number(customerDTO.getPhone_number());
+        customer.setPhoneNumber(customerDTO.getPhoneNumber());
 
         Mockito.verify(customerRepository).save(customer);
     }

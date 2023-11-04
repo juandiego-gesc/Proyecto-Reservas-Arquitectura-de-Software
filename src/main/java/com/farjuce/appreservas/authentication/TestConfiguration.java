@@ -1,9 +1,8 @@
-package com.farjuce.appreservas.basicAuth;
+package com.farjuce.appreservas.authentication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 
 
@@ -11,8 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Profile("test")
 public class TestConfiguration {
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
-        return (web) -> web.ignoring().antMatchers( "/**");
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return web -> web.ignoring().antMatchers( "/**");
 
     }
 

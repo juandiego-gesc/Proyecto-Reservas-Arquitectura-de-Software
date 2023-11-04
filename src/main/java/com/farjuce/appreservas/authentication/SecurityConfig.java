@@ -1,4 +1,4 @@
-package com.farjuce.appreservas.basicAuth;
+package com.farjuce.appreservas.authentication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class SecurityConfig {
+public class  SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -33,7 +33,7 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .cors().and()
-            .authorizeHttpRequests( (authorize) -> authorize
+            .authorizeHttpRequests(authorize -> authorize
                 .antMatchers("/app/**").hasRole("USER")
                 .anyRequest().authenticated()
             )

@@ -13,7 +13,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8080",
+      "url": "https://localhost:8080",
       "description": "Inferred Url"
     }
   ],
@@ -44,7 +44,7 @@
     }
   ],
   "paths": {
-    "/appointment/create": {
+    "/app/appointment/create": {
       "post": {
         "tags": [
           "appointment-controller"
@@ -86,7 +86,7 @@
         }
       }
     },
-    "/appointment/delete": {
+    "/app/appointment/delete": {
       "delete": {
         "tags": [
           "appointment-controller"
@@ -95,7 +95,7 @@
         "operationId": "deleteAppointmentUsingDELETE",
         "parameters": [
           {
-            "name": "customer_id",
+            "name": "customerId",
             "in": "query",
             "required": false,
             "style": "form",
@@ -114,7 +114,7 @@
             }
           },
           {
-            "name": "employee_id",
+            "name": "employeeId",
             "in": "query",
             "required": false,
             "style": "form",
@@ -124,7 +124,7 @@
             }
           },
           {
-            "name": "end_time",
+            "name": "endTime",
             "in": "query",
             "required": false,
             "style": "form",
@@ -143,7 +143,7 @@
             }
           },
           {
-            "name": "start_time",
+            "name": "startTime",
             "in": "query",
             "required": false,
             "style": "form",
@@ -161,7 +161,7 @@
             }
           },
           {
-            "name": "task_id",
+            "name": "taskId",
             "in": "query",
             "required": false,
             "style": "form",
@@ -187,7 +187,7 @@
         }
       }
     },
-    "/appointment/update": {
+    "/app/appointment/update": {
       "put": {
         "tags": [
           "appointment-controller"
@@ -222,7 +222,7 @@
         }
       }
     },
-    "/appointments/getAll": {
+    "/app/appointments/getAll": {
       "get": {
         "tags": [
           "appointment-controller"
@@ -255,7 +255,7 @@
         }
       }
     },
-    "/appointments/getAvailable": {
+    "/app/appointments/getAvailable": {
       "get": {
         "tags": [
           "appointment-controller"
@@ -264,9 +264,9 @@
         "operationId": "getAvailableAppointmentsUsingGET",
         "parameters": [
           {
-            "name": "task_id",
+            "name": "taskId",
             "in": "query",
-            "description": "task_id",
+            "description": "taskId",
             "required": true,
             "style": "form",
             "schema": {
@@ -275,9 +275,9 @@
             }
           },
           {
-            "name": "start_time",
+            "name": "startTime",
             "in": "query",
-            "description": "start_time",
+            "description": "startTime",
             "required": true,
             "style": "form",
             "schema": {
@@ -285,9 +285,9 @@
             }
           },
           {
-            "name": "end_time",
+            "name": "endTime",
             "in": "query",
-            "description": "end_time",
+            "description": "endTime",
             "required": true,
             "style": "form",
             "schema": {
@@ -331,7 +331,7 @@
         }
       }
     },
-    "/getMyAppointment/{id}": {
+    "/app/getMyAppointment/{id}": {
       "get": {
         "tags": [
           "appointment-controller"
@@ -633,7 +633,7 @@
         }
       }
     },
-    "/branch/add": {
+    "/app/branch/add": {
       "post": {
         "tags": [
           "branch-controller"
@@ -675,7 +675,40 @@
         }
       }
     },
-    "/customer/add": {
+    "/app/branch/getAll": {
+      "get": {
+        "tags": [
+          "branch-controller"
+        ],
+        "summary": "getBranch",
+        "operationId": "getBranchUsingGET",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Branch"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/app/customer/add": {
       "post": {
         "tags": [
           "customer-controller"
@@ -717,7 +750,7 @@
         }
       }
     },
-    "/customer/getAll": {
+    "/app/customer/getAll": {
       "get": {
         "tags": [
           "customer-controller"
@@ -750,7 +783,7 @@
         }
       }
     },
-    "/employee/add": {
+    "/app/employee/add": {
       "post": {
         "tags": [
           "employee-controller"
@@ -792,7 +825,7 @@
         }
       }
     },
-    "/employees/getAll": {
+    "/app/employees/getAll": {
       "get": {
         "tags": [
           "employee-controller"
@@ -825,7 +858,7 @@
         }
       }
     },
-    "/task/add": {
+    "/app/task/add": {
       "post": {
         "tags": [
           "task-controller"
@@ -870,7 +903,7 @@
         }
       }
     },
-    "/task/getAll": {
+    "/app/task/getAll": {
       "get": {
         "tags": [
           "task-controller"
@@ -910,7 +943,7 @@
         "title": "Appointment",
         "type": "object",
         "properties": {
-          "appointment_id": {
+          "appointmentId": {
             "type": "integer",
             "format": "int64"
           },
@@ -923,10 +956,10 @@
           "employee": {
             "$ref": "#/components/schemas/Employee"
           },
-          "end_time": {
+          "endTime": {
             "type": "string"
           },
-          "start_time": {
+          "startTime": {
             "type": "string"
           },
           "state": {
@@ -941,33 +974,58 @@
         "title": "AppointmentDTO",
         "type": "object",
         "properties": {
-          "customer_id": {
+          "customerId": {
             "type": "integer",
             "format": "int64"
           },
           "date": {
             "type": "string"
           },
-          "employee_id": {
+          "employeeId": {
             "type": "integer",
             "format": "int64"
           },
-          "end_time": {
+          "endTime": {
             "type": "string"
           },
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "start_time": {
+          "startTime": {
             "type": "string"
           },
           "state": {
             "type": "string"
           },
-          "task_id": {
+          "taskId": {
             "type": "integer",
             "format": "int64"
+          }
+        }
+      },
+      "Branch": {
+        "title": "Branch",
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "branchId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "closureTime": {
+            "$ref": "#/components/schemas/LocalTime"
+          },
+          "name": {
+            "type": "string"
+          },
+          "openingTime": {
+            "$ref": "#/components/schemas/LocalTime"
+          },
+          "type": {
+            "type": "string"
           }
         }
       },
@@ -978,14 +1036,14 @@
           "address": {
             "type": "string"
           },
-          "closure_time": {
-            "$ref": "#/components/schemas/LocalTime"
+          "closureTime": {
+            "$ref": "#/components/schemas/LocalTimeReq"
           },
           "name": {
             "type": "string"
           },
-          "opening_time": {
-            "$ref": "#/components/schemas/LocalTime"
+          "openingTime": {
+            "$ref": "#/components/schemas/LocalTimeReq"
           },
           "type": {
             "type": "string"
@@ -996,7 +1054,7 @@
         "title": "Customer",
         "type": "object",
         "properties": {
-          "customer_id": {
+          "customerId": {
             "type": "integer",
             "format": "int64"
           },
@@ -1006,7 +1064,7 @@
           "name": {
             "type": "string"
           },
-          "phone_number": {
+          "phoneNumber": {
             "type": "integer",
             "format": "int64"
           }
@@ -1022,7 +1080,7 @@
           "name": {
             "type": "string"
           },
-          "phone_number": {
+          "phoneNumber": {
             "type": "integer",
             "format": "int64"
           }
@@ -1032,7 +1090,10 @@
         "title": "Employee",
         "type": "object",
         "properties": {
-          "employee_id": {
+          "branch": {
+            "$ref": "#/components/schemas/Branch"
+          },
+          "employeeId": {
             "type": "integer",
             "format": "int64"
           },
@@ -1048,10 +1109,14 @@
         "title": "EmployeeDTO",
         "type": "object",
         "properties": {
+          "branchId": {
+            "type": "integer",
+            "format": "int64"
+          },
           "name": {
             "type": "string"
           },
-          "task_id": {
+          "taskId": {
             "type": "integer",
             "format": "int64"
           }
@@ -1059,6 +1124,28 @@
       },
       "LocalTime": {
         "title": "LocalTime",
+        "type": "object",
+        "properties": {
+          "hour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minute": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nano": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "second": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "LocalTimeReq": {
+        "title": "LocalTimeReq",
         "type": "object",
         "properties": {
           "hour": {
@@ -1076,6 +1163,28 @@
           "second": {
             "type": "string",
             "format": "byte"
+          }
+        }
+      },
+      "LocalTimeRes": {
+        "title": "LocalTimeRes",
+        "type": "object",
+        "properties": {
+          "hour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minute": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nano": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "second": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
@@ -1204,7 +1313,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "task_id": {
+          "taskId": {
             "type": "integer",
             "format": "int64"
           }

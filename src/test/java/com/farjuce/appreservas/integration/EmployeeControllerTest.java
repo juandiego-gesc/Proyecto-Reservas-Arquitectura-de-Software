@@ -1,5 +1,7 @@
 package com.farjuce.appreservas.integration;
 
+import com.farjuce.appreservas.bd.brach.Branch;
+import com.farjuce.appreservas.controller.dto.BranchDTO;
 import com.farjuce.appreservas.controller.dto.EmployeeDTO;
 import com.farjuce.appreservas.controller.dto.TaskDTO;
 import org.junit.jupiter.api.Assertions;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +28,15 @@ class EmployeeControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    void Given_task_and_employee_When_added_employee_Then_employeeBD_is_not_empty() {
+    void Given_task_branch_and_employee_When_added_employee_Then_employeeBD_is_not_empty() {
         List<TaskDTO> tasks = new ArrayList<>();
         tasks.add(new TaskDTO("Task", "Test Task", 2, 1));
         restTemplate.postForEntity("/app/task/add", tasks, Boolean.class);
 
-        EmployeeDTO employeeDTO = new EmployeeDTO("Juan", 1L);
+        BranchDTO branchDTO = new BranchDTO("Test","TestAddress","TestType", LocalTime.now(),LocalTime.now());
+        restTemplate.postForEntity("/app/branch/add",branchDTO, Boolean.class);
+
+        EmployeeDTO employeeDTO = new EmployeeDTO("Juan", 1L,1L);
         restTemplate.postForEntity("/app/employee/add", employeeDTO, String.class);
         ResponseEntity<List> employeesDB = restTemplate.getForEntity("/app/employees/getAll", List.class);
 
@@ -38,14 +44,17 @@ class EmployeeControllerTest {
     }
 
     @Test
-    void Given_tasks_and_employees_When_added_employee_Then_retrieved_size_equals_employees_size() {
+    void Given_tasks_branch_and_employees_When_added_employee_Then_retrieved_size_equals_employees_size() {
         List<TaskDTO> tasks = new ArrayList<>();
         tasks.add(new TaskDTO("Task", "Test Task", 2, 1));
         tasks.add(new TaskDTO("Task1", "Test Task", 2, 1));
-        ResponseEntity<Boolean> confirmation = restTemplate.postForEntity("/app/task/add", tasks, Boolean.class);
+        BranchDTO branchDTO = new BranchDTO("Test","TestAddress","TestType", LocalTime.now(),LocalTime.now());
 
-        EmployeeDTO employeeDTO = new EmployeeDTO("Juan", 1L);
-        EmployeeDTO employeeDTO1 = new EmployeeDTO("Pedro", 2L);
+        ResponseEntity<Boolean> confirmation1 = restTemplate.postForEntity("/app/branch/add", branchDTO, Boolean.class);
+        ResponseEntity<Boolean> confirmation2 = restTemplate.postForEntity("/app/task/add", tasks, Boolean.class);
+
+        EmployeeDTO employeeDTO = new EmployeeDTO("Juan", 1L,1L);
+        EmployeeDTO employeeDTO1 = new EmployeeDTO("Pedro", 2L,1L);
         restTemplate.postForEntity("/app/employee/add", employeeDTO, String.class);
         restTemplate.postForEntity("/app/employee/add", employeeDTO1, String.class);
 
