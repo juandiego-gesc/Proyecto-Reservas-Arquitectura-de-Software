@@ -17,7 +17,7 @@
 							"basic": [
 								{
 									"key": "password",
-									"value": "use",
+									"value": "user",
 									"type": "string"
 								},
 								{
@@ -124,7 +124,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\" : \"Dunder Mifflin Scranton\",\n    \"address\" : \"Scranton\",\n    \"type\" : \"Paper\",\n    \"openingTime\": \"12:00:00\",\n    \"closureTime\": \"14:00:00\"\n}",
+							"raw": "{\n    \"name\" : \"Dunder Mifflin Scranton\",\n    \"address\" : \"Scranton\",\n    \"type\" : \"Paper\",\n    \"openingTime\": \"11:00:00\",\n    \"closureTime\": \"17:00:00\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -153,6 +153,21 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -207,7 +222,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Farro\",\n    \"taskId\": 1\n}",
+							"raw": "{\n    \"name\": \"Farro\",\n    \"taskId\": 1,\n    \"branchId\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -293,7 +308,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\" : \"Jose\",\n    \"email\" : \"daniel@unisabana.edu.co\",\n    \"phoneNumber\" : 3217998694\n}",
+							"raw": "{\n    \"name\" : \"Cesar Gimo\",\n    \"email\" : \"Cexar@unisabana.edu.co\",\n    \"phoneNumber\" : 3217998694\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -385,7 +400,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/appointments/getAvailable?taskId=1&date=2023-09-08&startTime=15:00:00&endTime=16:00:00",
+							"raw": "https://localhost:8080/app/appointments/getAvailable?taskId=1&date=2023-11-04&startTime=14:00:00&endTime=15:00:00",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -403,15 +418,15 @@
 								},
 								{
 									"key": "date",
-									"value": "2023-09-08"
+									"value": "2023-11-04"
 								},
 								{
 									"key": "startTime",
-									"value": "15:00:00"
+									"value": "14:00:00"
 								},
 								{
 									"key": "endTime",
-									"value": "16:00:00"
+									"value": "15:00:00"
 								}
 							]
 						}
@@ -440,7 +455,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"date\" : \"2023-09-08\",\n\n    \"startTime\" : \"02:00:00\",\n\n    \"endTime\" : \"04:00:00\",\n\n    \"state\" : \"Active\",\n\n    \"customerId\" : 1,\n\n    \"taskId\" : 3,\n\n    \"employeeId\": 2\n\n}",
+							"raw": "{\n\n    \"date\" : \"2023-11-04\",\n\n    \"startTime\" : \"14:00:00\",\n\n    \"endTime\" : \"15:00:00\",\n\n    \"state\" : \"Active\",\n\n    \"customerId\" : 1,\n\n    \"taskId\" : 1,\n\n    \"employeeId\": 3\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"

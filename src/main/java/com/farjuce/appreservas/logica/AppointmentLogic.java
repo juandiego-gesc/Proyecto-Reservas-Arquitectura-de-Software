@@ -38,6 +38,7 @@ public class AppointmentLogic {
         List<Employee> availability = getAvailabilityByTimeAndTask(appointmentDTO.getTaskId(),
                 appointmentDTO.getStartTime(), appointmentDTO.getEndTime(), dateInString);
 
+
         if (availability.stream().anyMatch(employee -> employee.getEmployeeId() == appointmentDTO.getEmployeeId())) {
             Appointment appointment = new Appointment();
             appointment.setDate(appointmentDTO.getDate());
