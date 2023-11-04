@@ -5,6 +5,8 @@ import com.farjuce.appreservas.bd.brach.BranchRepository;
 import com.farjuce.appreservas.controller.dto.BranchDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BranchLogic {
 
@@ -26,5 +28,10 @@ public class BranchLogic {
 
         return repository.save(branch);
     }
+
+    public List<Branch> getAllBranches() {
+        return repository.findAll();
+    }
+
 
 }

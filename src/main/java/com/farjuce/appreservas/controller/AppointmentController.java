@@ -26,8 +26,8 @@ public class AppointmentController {
     public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         try {
             Appointment appointment = logic.createAppointment(appointmentDTO);
-            LOGGER.info("Appointment created with id: {}", appointment.getAppointment_id());
-            return "Appointment created with id: " + appointment.getAppointment_id();
+            LOGGER.info("Appointment created with id: {}", appointment.getAppointmentId());
+            return "Appointment created with id: " + appointment.getAppointmentId();
         } catch (Exception e) {
             LOGGER.error("Appointment not created: {}", e.getMessage());
             return "Appointment not created: " + e.getMessage();
@@ -47,10 +47,10 @@ public class AppointmentController {
     }
 
     @GetMapping(path = "/app/appointments/getAvailable")
-    public List<Employee> getAvailableAppointments(@RequestParam Long task_id, @RequestParam String start_time,
-            @RequestParam String end_time, @RequestParam String date) {
-        LOGGER.info("Getting available appointments for task with id: {}, start time: {}, end time: {}, and date: {}", task_id, start_time, end_time, date);
-        return logic.getAvailabilityByTimeAndTask(task_id, start_time, end_time, date);
+    public List<Employee> getAvailableAppointments(@RequestParam Long taskId, @RequestParam String startTime,
+                                                   @RequestParam String endTime, @RequestParam String date) {
+        LOGGER.info("Getting available appointments for task with id: {}, start time: {}, end time: {}, and date: {}", taskId, startTime, endTime, date);
+        return logic.getAvailabilityByTimeAndTask(taskId, startTime, endTime, date);
     }
 
     @PutMapping(path = "/app/appointment/update")

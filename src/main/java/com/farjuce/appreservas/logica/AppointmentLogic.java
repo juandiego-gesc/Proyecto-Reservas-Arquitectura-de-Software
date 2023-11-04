@@ -36,8 +36,10 @@ public class AppointmentLogic {
 
 
         String dateInString = appointmentDTO.getDate().toString();
+
         List<Employee> availability = getAvailabilityByTimeAndTask(appointmentDTO.getTaskId(),
                 appointmentDTO.getStartTime(), appointmentDTO.getEndTime(), dateInString);
+        System.out.println(availability);
 
         if (availability.stream().anyMatch(employee -> employee.getEmployeeId() == appointmentDTO.getEmployeeId())) {
             Appointment appointment = new Appointment();
@@ -56,12 +58,16 @@ public class AppointmentLogic {
     }
 
     public List<Employee> getAvailabilityByTimeAndTask(Long taskId, String startTime, String endTime, String date) {
+        List<Long> employeeIds = new ArrayList<>();
+        try{
         List<Object[]> queryResult = appointmentRepository.findAvailableEmployees(taskId, date, startTime, endTime);
 
-        List<Long> employeeIds = new ArrayList<>();
         for (Object[] result : queryResult) {
             Long employeeId = ((Number) result[0]).longValue();
             employeeIds.add(employeeId);
+        }
+        }catch (Exception e){
+            System.out.println("jxbrxjbxjx");
         }
         return employeeRepository.findAllById(employeeIds);
     }

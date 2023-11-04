@@ -38,6 +38,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation ("org.springframework.boot:spring-boot-starter-security")
 
+    implementation("org.slf4j:slf4j-api:1.7.32")
+
     implementation("io.springfox:springfox-boot-starter:3.0.0")
 }
 
