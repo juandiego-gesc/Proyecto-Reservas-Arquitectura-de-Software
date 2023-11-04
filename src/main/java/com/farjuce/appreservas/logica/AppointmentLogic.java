@@ -37,7 +37,7 @@ public class AppointmentLogic {
 
         List<Employee> availability = getAvailabilityByTimeAndTask(appointmentDTO.getTaskId(),
                 appointmentDTO.getStartTime(), appointmentDTO.getEndTime(), dateInString);
-        System.out.println(availability);
+
 
         if (availability.stream().anyMatch(employee -> employee.getEmployeeId() == appointmentDTO.getEmployeeId())) {
             Appointment appointment = new Appointment();
