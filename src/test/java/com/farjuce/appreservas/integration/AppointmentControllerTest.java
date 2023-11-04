@@ -36,7 +36,7 @@ class AppointmentControllerTest {
 
         RestTemplate mockRes = mock(RestTemplate.class);
 
-        EmployeeDTO employeeDTO = new EmployeeDTO("Juan", 1L);
+        EmployeeDTO employeeDTO = new EmployeeDTO("Juan", 1L,1L);
 
         List<TaskDTO> tasks = new ArrayList<>();
         tasks.add(new TaskDTO("Task", "Test Task", 2, 1));

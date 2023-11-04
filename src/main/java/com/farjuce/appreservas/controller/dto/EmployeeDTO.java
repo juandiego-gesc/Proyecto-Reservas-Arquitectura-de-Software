@@ -12,5 +12,7 @@ public class EmployeeDTO {
     private String name;
     @NonNull
     private Long taskId;
+    @NonNull
+    private Long branchId;
 
 }

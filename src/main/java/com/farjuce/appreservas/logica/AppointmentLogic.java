@@ -18,14 +18,12 @@ import java.util.Objects;
 public class AppointmentLogic {
 
     private AppointmentRepository appointmentRepository;
-
     private CustomerRepository customerRepository;
     private EmployeeRepository employeeRepository;
-
     private TaskRepository taskRepository;
 
     public AppointmentLogic(AppointmentRepository appointmentRepository, CustomerRepository customerRepository,
-            TaskRepository taskRepository, EmployeeRepository employeeRepository) {
+                            TaskRepository taskRepository, EmployeeRepository employeeRepository) {
         this.appointmentRepository = appointmentRepository;
         this.customerRepository = customerRepository;
         this.taskRepository = taskRepository;
@@ -39,7 +37,7 @@ public class AppointmentLogic {
 
         List<Employee> availability = getAvailabilityByTimeAndTask(appointmentDTO.getTaskId(),
                 appointmentDTO.getStartTime(), appointmentDTO.getEndTime(), dateInString);
-
+        System.out.println(availability);
 
         if (availability.stream().anyMatch(employee -> employee.getEmployeeId() == appointmentDTO.getEmployeeId())) {
             Appointment appointment = new Appointment();
@@ -74,13 +72,13 @@ public class AppointmentLogic {
         appointmentRepository.deleteById(id);
     }
 
-    public void updateAppointment(AppointmentDTO appointmentDTO)  {
+    public void updateAppointment(AppointmentDTO appointmentDTO) {
 
-            Appointment appointment = appointmentRepository.getReferenceById(appointmentDTO.getId());
-            appointment.setDate(appointmentDTO.getDate());
-            appointment.setStartTime(appointmentDTO.getStartTime());
-            appointment.setEndTime(appointmentDTO.getEndTime());
-            appointmentRepository.save(appointment);
+        Appointment appointment = appointmentRepository.getReferenceById(appointmentDTO.getId());
+        appointment.setDate(appointmentDTO.getDate());
+        appointment.setStartTime(appointmentDTO.getStartTime());
+        appointment.setEndTime(appointmentDTO.getEndTime());
+        appointmentRepository.save(appointment);
 
 
     }

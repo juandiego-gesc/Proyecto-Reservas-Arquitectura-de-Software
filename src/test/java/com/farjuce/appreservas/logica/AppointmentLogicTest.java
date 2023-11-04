@@ -63,7 +63,7 @@ class AppointmentLogicTest {
     @Test
     void Given_appointment_When_creating_new_appointment_Then_save() {
 
-        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", 1L);
+        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", 1L,1L);
         Employee employee = employeeLogic.addEmployee(employeeDTO);
         employee.setEmployeeId(1L);
 
@@ -115,7 +115,7 @@ class AppointmentLogicTest {
         when(appointmentRepository.findAvailableEmployees(anyLong(), anyString(), anyString(), anyString())).thenReturn(queryResult);
 
 
-        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", 1L);
+        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", 1L,1L);
         Employee employee = employeeLogic.addEmployee(employeeDTO);
         employee.setEmployeeId(employeeId);
 
