@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class AppointmentController {
 
@@ -36,7 +37,7 @@ public class AppointmentController {
 
     @GetMapping(path = "/app/getMyAppointment/{id}")
     public List<Appointment> getMyAppointment(@PathVariable Long id) {
-        LOGGER.info("Getting appointments for employee with id: {}", id);
+        LOGGER.info("Getting appointments for customer with id: {}", id);
         return logic.getMyAppointments(id);
     }
 
@@ -57,7 +58,6 @@ public class AppointmentController {
     public void updateAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         LOGGER.info("Updating appointment with id: {}", appointmentDTO.getId());
         logic.updateAppointment(appointmentDTO);
-
     }
 
     @DeleteMapping(path = "/app/appointment/delete")
