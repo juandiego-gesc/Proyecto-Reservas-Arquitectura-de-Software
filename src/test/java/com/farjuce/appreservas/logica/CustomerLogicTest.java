@@ -9,12 +9,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.mockito.Mockito.verify;
 
 @ActiveProfiles(profiles = "test")
 @ExtendWith(MockitoExtension.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class CustomerLogicTest {
 
     @Mock
@@ -42,6 +44,5 @@ class CustomerLogicTest {
 
         customerLogic.getAllCustomers();
         verify(customerRepository).findAll();
-
     }
 }

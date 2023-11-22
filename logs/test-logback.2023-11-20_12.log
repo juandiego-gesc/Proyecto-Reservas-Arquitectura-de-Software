@@ -1,0 +1,344 @@
+12618 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+12690 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12714 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12815 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+12879 [http-nio-auto-1-exec-4] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+12896 [http-nio-auto-1-exec-9] INFO  c.f.a.c.AppointmentController - Getting all appointments
+13236 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+13308 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+13336 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+13340 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13356 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13380 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13412 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13491 [http-nio-auto-1-exec-5] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+13491 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+16916 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+16996 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+17028 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+17036 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+17052 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+17076 [http-nio-auto-1-exec-5] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+17116 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+17187 [http-nio-auto-1-exec-7] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+17187 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+17396 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Juan, address=Bogotá, type=Sede, openingTime=12:30, closureTime=02:30)
+17396 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.BranchController - Branch created successfully
+17420 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.BranchController - Retrieved 2 branches
+17455 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+17463 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.CustomerController - Retrieved 2 customers
+17494 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+17494 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+17503 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:11:56.550242, closureTime=12:11:56.550242)
+17503 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.BranchController - Branch created successfully
+17510 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+17510 [http-nio-auto-1-exec-5] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+17518 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.EmployeeController - Getting all employees
+17534 [http-nio-auto-1-exec-2] DEBUG c.f.a.controller.EmployeeController - Retrieved 2 employees
+17553 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:11:56.598288900, closureTime=12:11:56.598288900)
+17555 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Branch created successfully
+17558 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1), TaskDTO(name=Task1, description=Test Task, duration=2, price=1)]
+17566 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+17574 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+17574 [http-nio-auto-1-exec-4] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+17582 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pedro, taskId=2, branchId=1)
+17582 [http-nio-auto-1-exec-8] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+17590 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.EmployeeController - Getting all employees
+17598 [http-nio-auto-1-exec-9] DEBUG c.f.a.controller.EmployeeController - Retrieved 4 employees
+17622 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+17622 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+17630 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to get all tasks
+17638 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Returning 5 tasks
+13248 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:14:15.809210700, closureTime=12:14:15.809210700)
+13320 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+13361 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1), TaskDTO(name=Task1, description=Test Task, duration=2, price=1)]
+13373 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13385 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13401 [http-nio-auto-1-exec-5] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13409 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pedro, taskId=2, branchId=1)
+13417 [http-nio-auto-1-exec-6] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13417 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Getting all employees
+13610 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Retrieved 2 employees
+11871 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+11988 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12022 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:15:04.679556300, closureTime=12:15:04.679556300)
+12030 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Branch created successfully
+12038 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12062 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12070 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.EmployeeController - Getting all employees
+12263 [http-nio-auto-1-exec-4] DEBUG c.f.a.controller.EmployeeController - Retrieved 1 employees
+12292 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:15:04.965713200, closureTime=12:15:04.965713200)
+12297 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.BranchController - Branch created successfully
+12300 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1), TaskDTO(name=Task1, description=Test Task, duration=2, price=1)]
+12308 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12316 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12316 [http-nio-auto-1-exec-7] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12332 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pedro, taskId=2, branchId=1)
+12332 [http-nio-auto-1-exec-8] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12340 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.EmployeeController - Getting all employees
+12348 [http-nio-auto-1-exec-9] DEBUG c.f.a.controller.EmployeeController - Retrieved 3 employees
+12738 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+12738 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.BranchController - Branch created successfully
+12754 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+12754 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12762 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12770 [http-nio-auto-1-exec-6] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12798 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+12854 [http-nio-auto-1-exec-4] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+12854 [http-nio-auto-1-exec-5] INFO  c.f.a.c.AppointmentController - Getting all appointments
+12886 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Juan, address=Bogotá, type=Sede, openingTime=12:30, closureTime=02:30)
+12886 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.BranchController - Branch created successfully
+12902 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Retrieved 4 branches
+12926 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+12934 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.CustomerController - Retrieved 2 customers
+12961 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+12969 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12969 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to get all tasks
+12977 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Returning 5 tasks
+12979 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+13067 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13099 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:15:37.555942600, closureTime=12:15:37.555942600)
+13107 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.BranchController - Branch created successfully
+13115 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13139 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13148 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.EmployeeController - Getting all employees
+13356 [http-nio-auto-1-exec-4] DEBUG c.f.a.controller.EmployeeController - Retrieved 1 employees
+13388 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:15:37.852716300, closureTime=12:15:37.852716300)
+13388 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.BranchController - Branch created successfully
+13396 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1), TaskDTO(name=Task1, description=Test Task, duration=2, price=1)]
+13396 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13404 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13412 [http-nio-auto-1-exec-7] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13412 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pedro, taskId=2, branchId=1)
+13420 [http-nio-auto-1-exec-8] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13420 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.EmployeeController - Getting all employees
+13428 [http-nio-auto-1-exec-9] DEBUG c.f.a.controller.EmployeeController - Retrieved 3 employees
+13811 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+13811 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.BranchController - Branch created successfully
+13819 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+13819 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13834 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13836 [http-nio-auto-1-exec-2] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13860 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13916 [http-nio-auto-1-exec-4] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+13924 [http-nio-auto-1-exec-5] INFO  c.f.a.c.AppointmentController - Getting all appointments
+13958 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Juan, address=Bogotá, type=Sede, openingTime=12:30, closureTime=02:30)
+13958 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Branch created successfully
+13987 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Retrieved 4 branches
+14023 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+14034 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.CustomerController - Retrieved 2 customers
+14055 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+14055 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+14063 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to get all tasks
+14071 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Returning 5 tasks
+12784 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+12856 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.BranchController - Branch created successfully
+12896 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+12904 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12912 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12936 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12968 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13041 [http-nio-auto-1-exec-10] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+13049 [http-nio-auto-1-exec-5] INFO  c.f.a.c.AppointmentController - Getting all appointments
+13258 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Juan, address=Bogotá, type=Sede, openingTime=12:30, closureTime=02:30)
+13258 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Branch created successfully
+13282 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.BranchController - Retrieved 2 branches
+13298 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13314 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.CustomerController - Retrieved 2 customers
+13330 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+13338 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13346 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:16:00.874351200, closureTime=12:16:00.874351200)
+13346 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+13354 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13362 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13362 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.EmployeeController - Getting all employees
+13378 [http-nio-auto-1-exec-2] DEBUG c.f.a.controller.EmployeeController - Retrieved 2 employees
+13395 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:16:00.922350300, closureTime=12:16:00.922350300)
+13395 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.BranchController - Branch created successfully
+13402 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1), TaskDTO(name=Task1, description=Test Task, duration=2, price=1)]
+13402 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13410 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13418 [http-nio-auto-1-exec-7] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13426 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pedro, taskId=2, branchId=1)
+13426 [http-nio-auto-1-exec-9] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13434 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.EmployeeController - Getting all employees
+13434 [http-nio-auto-1-exec-8] DEBUG c.f.a.controller.EmployeeController - Retrieved 4 employees
+13466 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+13466 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13474 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.TaskController - Received request to get all tasks
+13482 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.TaskController - Returning 5 tasks
+12102 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+12174 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12198 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:17:38.272794600, closureTime=12:17:38.272794600)
+12214 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+12222 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12246 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12254 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.EmployeeController - Getting all employees
+12461 [http-nio-auto-1-exec-4] DEBUG c.f.a.controller.EmployeeController - Retrieved 1 employees
+12489 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:17:38.567911, closureTime=12:17:38.567911)
+12493 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.BranchController - Branch created successfully
+12501 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1), TaskDTO(name=Task1, description=Test Task, duration=2, price=1)]
+12501 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12509 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12509 [http-nio-auto-1-exec-7] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12517 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pedro, taskId=2, branchId=1)
+12517 [http-nio-auto-1-exec-8] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12525 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.EmployeeController - Getting all employees
+12533 [http-nio-auto-1-exec-9] DEBUG c.f.a.controller.EmployeeController - Retrieved 3 employees
+12918 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+12918 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.BranchController - Branch created successfully
+12926 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+12934 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12942 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12942 [http-nio-auto-1-exec-1] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12982 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13070 [http-nio-auto-1-exec-4] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+13078 [http-nio-auto-1-exec-5] INFO  c.f.a.c.AppointmentController - Getting all appointments
+13110 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Juan, address=Bogotá, type=Sede, openingTime=12:30, closureTime=02:30)
+13110 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Branch created successfully
+13134 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Retrieved 4 branches
+13167 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13175 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.CustomerController - Retrieved 2 customers
+13204 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+13207 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13215 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to get all tasks
+13215 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Returning 5 tasks
+13224 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+13299 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13324 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:21:19.832796300, closureTime=12:21:19.832796300)
+13332 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.BranchController - Branch created successfully
+13348 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13372 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13372 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.EmployeeController - Getting all employees
+13556 [http-nio-auto-1-exec-4] DEBUG c.f.a.controller.EmployeeController - Retrieved 1 employees
+13588 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.EmployeeController - Getting all employees
+13588 [http-nio-auto-1-exec-5] DEBUG c.f.a.controller.EmployeeController - Retrieved 1 employees
+13596 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test, address=TestAddress, type=TestType, openingTime=12:21:20.105343800, closureTime=12:21:20.105343800)
+13596 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Branch created successfully
+13604 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1), TaskDTO(name=Task1, description=Test Task, duration=2, price=1)]
+13604 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13612 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13612 [http-nio-auto-1-exec-8] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13620 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pedro, taskId=2, branchId=1)
+13624 [http-nio-auto-1-exec-9] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13628 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.EmployeeController - Getting all employees
+13636 [http-nio-auto-1-exec-10] DEBUG c.f.a.controller.EmployeeController - Retrieved 3 employees
+13956 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+13956 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+13964 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+13972 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13972 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13980 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+14004 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+14068 [http-nio-auto-1-exec-5] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+14068 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+14100 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Juan, address=Bogotá, type=Sede, openingTime=12:30, closureTime=02:30)
+14100 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.BranchController - Branch created successfully
+14116 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.BranchController - Retrieved 4 branches
+14140 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+14156 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.CustomerController - Retrieved 2 customers
+14180 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=2, price=1)]
+14180 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+14188 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to get all tasks
+14188 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Returning 5 tasks
+13479 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+13551 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+13575 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+13583 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13591 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13614 [http-nio-auto-1-exec-8] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13639 [http-nio-auto-1-exec-10] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13719 [http-nio-auto-1-exec-2] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+13727 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+13454 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+13518 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.BranchController - Branch created successfully
+13550 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+13558 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13574 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13590 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13622 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13718 [http-nio-auto-1-exec-7] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+13718 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+12776 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Adress, type=Test Type, openingTime=11:00, closureTime=17:00)
+12848 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+12873 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+12880 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12896 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12912 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12944 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13016 [http-nio-auto-1-exec-5] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+13024 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+13747 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Address, type=Test Type, openingTime=11:00, closureTime=17:00)
+13819 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+13851 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+13859 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13875 [http-nio-auto-1-exec-9] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13891 [http-nio-auto-1-exec-9] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13923 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+14011 [http-nio-auto-1-exec-5] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+14019 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+13551 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Address, type=Test Type, openingTime=11:00, closureTime=17:00)
+13622 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+13653 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+13669 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+13677 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+13701 [http-nio-auto-1-exec-3] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+13741 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+13814 [http-nio-auto-1-exec-4] ERROR c.f.a.c.AppointmentController - Appointment not created: could not prepare statement; SQL [SELECT emp.employee_id, emp.name FROM employee emp , branch as br WHERE emp.task_id = ? AND emp.employee_id NOT IN (     SELECT app.employee_id     FROM appointment app     WHERE app.date = ?     AND (        (TIME(app.start_time) <= TIME(?) AND TIME(app.end_time) > TIME(?))         OR         (TIME(app.start_time) < TIME(?) AND TIME(app.end_time) >= TIME(?))         OR         (TIME(app.start_time) >= TIME(?) AND TIME(app.end_time) <= TIME(?))     )     AND app.task_id = ? ) AND br.branch_id = 1   AND (TIME(br.opening_time) <= TIME(?) AND TIME(br.closure_time) >= TIME(?))]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+13822 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+11063 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Address, type=Test Type, openingTime=11:00, closureTime=17:00)
+11127 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+11156 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+11165 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+11177 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+11200 [http-nio-auto-1-exec-6] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+11233 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+11499 [http-nio-auto-1-exec-10] INFO  c.f.a.c.AppointmentController - Appointment created with id: 1
+11504 [http-nio-auto-1-exec-3] INFO  c.f.a.c.AppointmentController - Getting all appointments
+12497 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Address, type=Test Type, openingTime=11:00, closureTime=17:00)
+12562 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+12591 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+12603 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+12612 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+12636 [http-nio-auto-1-exec-4] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+12669 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+12978 [http-nio-auto-1-exec-3] INFO  c.f.a.c.AppointmentController - Appointment created with id: 1
+12983 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting all appointments
+11628 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Address, type=Test Type, openingTime=11:00, closureTime=17:00)
+11699 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.BranchController - Branch created successfully
+11726 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+11736 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+11745 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+11765 [http-nio-auto-1-exec-4] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+11794 [http-nio-auto-1-exec-8] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+12064 [http-nio-auto-1-exec-5] INFO  c.f.a.c.AppointmentController - Appointment created with id: 1
+12072 [http-nio-auto-1-exec-1] ERROR c.f.a.c.AppointmentController - Appointment not created: null
+10987 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Address, type=Test Type, openingTime=11:00, closureTime=17:00)
+11052 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+11081 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+11091 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+11100 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+11121 [http-nio-auto-1-exec-7] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+11151 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+11428 [http-nio-auto-1-exec-8] INFO  c.f.a.c.AppointmentController - Appointment created with id: 1
+11437 [http-nio-auto-1-exec-6] ERROR c.f.a.c.AppointmentController - Appointment not created: null
+11038 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Address, type=Test Type, openingTime=11:00, closureTime=17:00)
+11103 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+11133 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+11143 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+11152 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+11175 [http-nio-auto-1-exec-7] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+11185 [http-nio-auto-1-exec-4] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pepe, taskId=1, branchId=1)
+11188 [http-nio-auto-1-exec-4] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+11215 [http-nio-auto-1-exec-5] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+11224 [http-nio-auto-1-exec-6] INFO  c.f.a.c.AppointmentController - Getting appointments for employee with id: 1
+10941 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Creating branch: BranchDTO(name=Test Branch, address=Test Address, type=Test Type, openingTime=11:00, closureTime=17:00)
+11006 [http-nio-auto-1-exec-1] INFO  c.f.a.controller.BranchController - Branch created successfully
+11033 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.TaskController - Received request to add task(s): [TaskDTO(name=Task, description=Test Task, duration=1, price=1)]
+11042 [http-nio-auto-1-exec-3] INFO  c.f.a.controller.TaskController - Task(s) added successfully
+11051 [http-nio-auto-1-exec-2] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Juan, taskId=1, branchId=1)
+11072 [http-nio-auto-1-exec-2] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+11081 [http-nio-auto-1-exec-6] INFO  c.f.a.controller.EmployeeController - Adding employee: EmployeeDTO(name=Pepe, taskId=1, branchId=1)
+11084 [http-nio-auto-1-exec-6] DEBUG c.f.a.controller.EmployeeController - Employee added successfully
+11119 [http-nio-auto-1-exec-7] INFO  c.f.a.controller.CustomerController - New customer added: Juan
+11128 [http-nio-auto-1-exec-4] INFO  c.f.a.c.AppointmentController - Getting appointments for employee with id: 50

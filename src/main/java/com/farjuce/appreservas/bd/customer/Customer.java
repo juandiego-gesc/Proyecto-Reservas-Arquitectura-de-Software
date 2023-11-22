@@ -27,6 +27,6 @@ public class Customer {
     private long phoneNumber;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Appointment> appointments = new HashSet<>();
 }

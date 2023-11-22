@@ -28,11 +28,9 @@ public class TaskLogic {
             tasks.add(taskRepository.save(task));
         }
         return tasks;
-
     }
 
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
-
 }

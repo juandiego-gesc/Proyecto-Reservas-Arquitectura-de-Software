@@ -29,7 +29,7 @@ public class Appointment {
     @Column
     private String state;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "customerId")
     private Customer customer;
 

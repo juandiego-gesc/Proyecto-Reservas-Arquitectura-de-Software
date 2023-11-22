@@ -38,5 +38,4 @@ public class BranchController {
 
         return branches;
     }
-
 }

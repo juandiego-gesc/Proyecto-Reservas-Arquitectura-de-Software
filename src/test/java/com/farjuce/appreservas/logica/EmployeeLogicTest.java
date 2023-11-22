@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 @ActiveProfiles(profiles = "test")
 @ExtendWith(MockitoExtension.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class EmployeeLogicTest {
 
     @Mock
@@ -36,9 +38,6 @@ class EmployeeLogicTest {
     @InjectMocks
     EmployeeLogic employeeLogic;
 
-    @InjectMocks
-    TaskLogic taskLogic;
-
     @Test
     void Given_employee_with_task_When_added_Then_save_employee() {
         Task task = new Task();
@@ -48,7 +47,7 @@ class EmployeeLogicTest {
 
         Mockito.when(taskRepository.getReferenceById(task.getTaskId())).thenReturn(task);
         Mockito.when(branchRepository.getReferenceById(branch.getBranchId())).thenReturn(branch);
-        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", task.getTaskId(),branch.getBranchId());
+        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", task.getTaskId(), branch.getBranchId());
         employeeLogic.addEmployee(employeeDTO);
         Employee employee = new Employee();
         employee.setName(employeeDTO.getName());
@@ -69,8 +68,8 @@ class EmployeeLogicTest {
 
         Mockito.when(taskRepository.getReferenceById(task.getTaskId())).thenReturn(task);
         Mockito.when(branchRepository.getReferenceById(branch.getBranchId())).thenReturn(branch);
-        EmployeeDTO employeeDTO1 = new EmployeeDTO("Employee Name 1", task.getTaskId(),branch.getBranchId());
-        EmployeeDTO employeeDTO2 = new EmployeeDTO("Employee Name 2", task.getTaskId(),branch.getBranchId());
+        EmployeeDTO employeeDTO1 = new EmployeeDTO("Employee Name 1", task.getTaskId(), branch.getBranchId());
+        EmployeeDTO employeeDTO2 = new EmployeeDTO("Employee Name 2", task.getTaskId(), branch.getBranchId());
 
         employeesDTO.add(employeeDTO1);
         employeesDTO.add(employeeDTO2);

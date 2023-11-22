@@ -13,7 +13,7 @@
   },
   "servers": [
     {
-      "url": "https://localhost:8080",
+      "url": "http://localhost:8080",
       "description": "Inferred Url"
     }
   ],
@@ -86,7 +86,7 @@
         }
       }
     },
-    "/app/appointment/delete": {
+    "/app/appointment/delete/{id}": {
       "delete": {
         "tags": [
           "appointment-controller"
@@ -95,76 +95,11 @@
         "operationId": "deleteAppointmentUsingDELETE",
         "parameters": [
           {
-            "name": "customerId",
-            "in": "query",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          },
-          {
-            "name": "date",
-            "in": "query",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "employeeId",
-            "in": "query",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          },
-          {
-            "name": "endTime",
-            "in": "query",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "id",
-            "in": "query",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          },
-          {
-            "name": "startTime",
-            "in": "query",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "state",
-            "in": "query",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "taskId",
-            "in": "query",
-            "required": false,
-            "style": "form",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "style": "simple",
             "schema": {
               "type": "integer",
               "format": "int64"
@@ -173,7 +108,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "204": {
             "description": "No Content"
@@ -205,7 +147,14 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "201": {
             "description": "Created"
@@ -1016,13 +965,20 @@
             "format": "int64"
           },
           "closureTime": {
-            "$ref": "#/components/schemas/LocalTime"
+            "$ref": "#/components/schemas/LocalTimeRes"
+          },
+          "employees": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Employee"
+            }
           },
           "name": {
             "type": "string"
           },
           "openingTime": {
-            "$ref": "#/components/schemas/LocalTime"
+            "$ref": "#/components/schemas/LocalTimeRes"
           },
           "type": {
             "type": "string"
@@ -1090,18 +1046,12 @@
         "title": "Employee",
         "type": "object",
         "properties": {
-          "branch": {
-            "$ref": "#/components/schemas/Branch"
-          },
           "employeeId": {
             "type": "integer",
             "format": "int64"
           },
           "name": {
             "type": "string"
-          },
-          "task": {
-            "$ref": "#/components/schemas/Task"
           }
         }
       },
@@ -1119,28 +1069,6 @@
           "taskId": {
             "type": "integer",
             "format": "int64"
-          }
-        }
-      },
-      "LocalTime": {
-        "title": "LocalTime",
-        "type": "object",
-        "properties": {
-          "hour": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "minute": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nano": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "second": {
-            "type": "integer",
-            "format": "int32"
           }
         }
       },

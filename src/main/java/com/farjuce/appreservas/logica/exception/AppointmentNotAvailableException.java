@@ -3,7 +3,7 @@ package com.farjuce.appreservas.logica.exception;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AppointmentNotAvailableException extends RuntimeException{
+public class AppointmentNotAvailableException extends RuntimeException {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppointmentNotAvailableException.class);
 

@@ -17,21 +17,16 @@ public class BranchLogic {
     }
 
     public Branch addBranch(BranchDTO branchDTO) {
-
         Branch branch = new Branch();
-
         branch.setName(branchDTO.getName());
         branch.setAddress(branchDTO.getAddress());
         branch.setType(branchDTO.getType());
         branch.setOpeningTime(branchDTO.getOpeningTime());
         branch.setClosureTime(branchDTO.getClosureTime());
-
         return repository.save(branch);
     }
 
     public List<Branch> getAllBranches() {
         return repository.findAll();
     }
-
-
 }

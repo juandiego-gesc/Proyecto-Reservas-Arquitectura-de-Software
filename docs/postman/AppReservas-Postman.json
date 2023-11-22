@@ -39,8 +39,8 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/task/add",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/task/add",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -82,8 +82,8 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/task/getAll",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/task/getAll",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -132,8 +132,8 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/branch/add",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/branch/add",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -180,8 +180,8 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/branch/getAll",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/branch/getAll",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -230,8 +230,8 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/employee/add",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/employee/add",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -266,8 +266,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8080/app/employees/getAll",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/employees/getAll",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -316,8 +316,8 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/customer/add",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/customer/add",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -352,8 +352,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8080/app/customer/getAll",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/customer/getAll",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -397,11 +397,16 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/appointments/getAvailable?taskId=1&date=2023-11-04&startTime=14:00:00&endTime=15:00:00",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/appointments/getAvailable?taskId=1&date=2023-11-04&startTime=14:00:00&endTime=15:00:00",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -455,7 +460,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"date\" : \"2023-11-04\",\n\n    \"startTime\" : \"14:00:00\",\n\n    \"endTime\" : \"15:00:00\",\n\n    \"state\" : \"Active\",\n\n    \"customerId\" : 1,\n\n    \"taskId\" : 1,\n\n    \"employeeId\": 3\n\n}",
+							"raw": "{\n\n    \"date\" : \"2023-11-21\",\n\n    \"startTime\" : \"14:00:00\",\n\n    \"endTime\" : \"15:00:00\",\n\n    \"state\" : \"Active\",\n\n    \"customerId\" : 1,\n\n    \"taskId\" : 1,\n\n    \"employeeId\": 1\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -463,8 +468,8 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8080/app/appointment/create",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/appointment/create",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -499,8 +504,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8080/app/appointments/getAll",
-							"protocol": "https",
+							"raw": "http://localhost:8080/app/appointments/getAll",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -509,6 +514,124 @@
 								"app",
 								"appointments",
 								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Appointments",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/app/getMyAppointment/1L",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"getMyAppointment",
+								"1L"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Appointment",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\" : \"2023-11-21\",\r\n\r\n    \"startTime\" : \"15:00:00\",\r\n\r\n    \"endTime\" : \"16:00:00\",\r\n\r\n    \"state\" : \"Active\",\r\n\r\n    \"customerId\" : 1,\r\n\r\n    \"taskId\" : 1,\r\n\r\n    \"employeeId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/app/appointment/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"appointment",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Appointment",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/app/appointment/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"app",
+								"appointment",
+								"delete",
+								"1"
 							]
 						}
 					},

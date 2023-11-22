@@ -7,8 +7,8 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles(profiles = "test")
 class AppreservasApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

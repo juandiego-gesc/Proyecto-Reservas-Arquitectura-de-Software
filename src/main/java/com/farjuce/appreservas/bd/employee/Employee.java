@@ -2,7 +2,7 @@ package com.farjuce.appreservas.bd.employee;
 
 import com.farjuce.appreservas.bd.brach.Branch;
 import com.farjuce.appreservas.bd.task.Task;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,11 +21,11 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "taskId")
-    @JsonManagedReference
+    @JsonIgnore
     private Task task;
 
     @ManyToOne
-    @JoinColumn(name = "branchId") // Nombre de la columna que relaciona Employee con Branch
+    @JoinColumn(name = "branchId")
+    @JsonIgnore
     private Branch branch;
-
 }
