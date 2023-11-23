@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //@EnableSwagger2
 public class AppreservasApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AppreservasApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AppreservasApplication.class, args);
+    }
 }

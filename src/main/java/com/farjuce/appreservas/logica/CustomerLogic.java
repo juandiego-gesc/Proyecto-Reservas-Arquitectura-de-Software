@@ -18,9 +18,7 @@ public class CustomerLogic {
     }
 
     public Customer addCustomer(CustomerDTO customerDTO) {
-
         Customer customer = new Customer();
-
         customer.setName(customerDTO.getName());
         customer.setEmail(customerDTO.getEmail());
         customer.setPhoneNumber(customerDTO.getPhoneNumber());

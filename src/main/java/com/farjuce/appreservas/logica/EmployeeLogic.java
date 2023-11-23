@@ -19,7 +19,7 @@ public class EmployeeLogic {
     public EmployeeLogic(EmployeeRepository employeeRepository, TaskRepository taskRepository, BranchRepository branchRepository) {
         this.employeeRepository = employeeRepository;
         this.taskRepository = taskRepository;
-        this.branchRepository=branchRepository;
+        this.branchRepository = branchRepository;
     }
 
     public Employee addEmployee(EmployeeDTO employeeDTO) {

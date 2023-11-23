@@ -27,11 +27,11 @@ public class AppointmentController {
     public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         try {
             Appointment appointment = logic.createAppointment(appointmentDTO);
-            LOGGER.info("Appointment created with id: {}", appointment.getAppointmentId());
-            return "Appointment created with id: " + appointment.getAppointmentId();
+            LOGGER.info("Appointment created with ID: {}", appointment.getAppointmentId());
+            return "Appointment created with ID: " + appointment.getAppointmentId();
         } catch (Exception e) {
             LOGGER.error("Appointment not created: {}", e.getMessage());
-            return "Appointment not created: " + e.getMessage();
+            return "Appointment can't be created: " + e.getMessage();
         }
     }
 
@@ -55,13 +55,27 @@ public class AppointmentController {
     }
 
     @PutMapping(path = "/app/appointment/update")
-    public void updateAppointment(@RequestBody AppointmentDTO appointmentDTO) {
-        LOGGER.info("Updating appointment with id: {}", appointmentDTO.getId());
-        logic.updateAppointment(appointmentDTO);
+    public String updateAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+        try {
+            LOGGER.info("Updating appointment with id: {}", appointmentDTO.getId());
+            logic.updateAppointment(appointmentDTO);
+            return ("Appointment with ID:" + appointmentDTO.getId() + " was updated \n" +
+                    "Start Time: " + appointmentDTO.getStartTime() + "\n" +
+                    "End Time: " + appointmentDTO.getEndTime() + "\n" +
+                    "Date: " + appointmentDTO.getDate());
+        } catch (Exception e) {
+            return ("The Appointment can't be updated: " + e.getMessage());
+        }
     }
 
-    @DeleteMapping(path = "/app/appointment/delete")
-    public void deleteAppointment(AppointmentDTO appointmentDTO) {
-        LOGGER.info("Deleting appointment with id: {}", appointmentDTO.getId());
+    @DeleteMapping(path = "/app/appointment/delete/{id}")
+    public String deleteAppointment(@PathVariable Long id) {
+        try {
+            logic.cancelAppointment(id);
+            LOGGER.info("Deleting appointment with ID: {}", id);
+            return ("Appointment with ID: " + id + " was deleted");
+        } catch (Exception e) {
+            return ("The Appointment can't be deleted: " + e.getMessage());
+        }
     }
 }

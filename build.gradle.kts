@@ -36,7 +36,7 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.32")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    implementation ("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-security")
 
     implementation("org.slf4j:slf4j-api:1.7.32")
 
@@ -62,9 +62,12 @@ tasks.jacocoTestReport {
     classDirectories.setFrom(
         files(classDirectories.files.map {
             fileTree(it) {
-                exclude("com/farjuce/appreservas/controller/dto/",
-                    "com/farjuce/appreservas/bd", "com/farjuce/appreservas/logica/exception",
-                    "com/farjuce/appreservas/AppreservasApplication")
+                exclude(
+                    "com/farjuce/appreservas/controller/dto/",
+                    "com/farjuce/appreservas/bd",
+                    "com/farjuce/appreservas/logica/exception",
+                    "com/farjuce/appreservas/AppreservasApplication.class",
+                )
             }
         })
     )
@@ -85,8 +88,11 @@ tasks.jacocoTestReport {
 
 pitest {
     junit5PluginVersion = "1.0.0"
-    excludedClasses = setOf("com.farjuce.appreservas.controller.dto.**",
-        "com.farjuce.appreservas.bd.**")
+    excludedClasses = setOf(
+        "com.farjuce.appreservas.controller.dto.**",
+        "com.farjuce.appreservas.bd.**",
+        "com.farjuce.appreservas.AppreservasApplication.java"
+    )
 }
 
 sonarqube {

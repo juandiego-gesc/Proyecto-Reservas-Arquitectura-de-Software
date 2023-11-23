@@ -23,22 +23,18 @@ public class CustomerController {
 
     @PostMapping(path = "/app/customer/add")
     public String saveCustomer(@RequestBody CustomerDTO customerDTO) {
-
-        String message = "Customer created";
-        logic.addCustomer(customerDTO);
-
+        Customer customer = logic.addCustomer(customerDTO);
+        String message = "Customer created:\n" +
+                "ID: " + customer.getCustomerId() + "\n" +
+                "Name: " + customer.getName();
         logger.info("New customer added: {}", customerDTO.getName());
-
         return message;
     }
 
     @GetMapping(path = "/app/customer/getAll")
     public List<Customer> getCustomer() {
-
         List<Customer> customers = logic.getAllCustomers();
-
         logger.info("Retrieved {} customers", customers.size());
-
         return customers;
     }
 

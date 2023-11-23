@@ -9,17 +9,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 @ActiveProfiles(profiles = "test")
 @ExtendWith(MockitoExtension.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class TaskLogicTest {
 
     @Mock
@@ -38,19 +39,19 @@ class TaskLogicTest {
 
         taskLogic.addTask(tasksDTO);
 
-        for (TaskDTO taskDTO:tasksDTO){
-            Task expectedTask= new Task();
+        for (TaskDTO taskDTO : tasksDTO) {
+            Task expectedTask = new Task();
             expectedTask.setName(taskDTO.getName());
             expectedTask.setDescription(taskDTO.getDescription());
             expectedTask.setDuration(taskDTO.getDuration());
             expectedTask.setPrice(taskDTO.getPrice());
             Mockito.verify(taskRepository).save(expectedTask);
         }
-        Mockito.verify(taskRepository,Mockito.times(2)).save(any(Task.class));
+        Mockito.verify(taskRepository, Mockito.times(2)).save(any(Task.class));
     }
 
     @Test
-    void Given_tasks_When_get_all_tasks_Then_return_all_tasks(){
+    void Given_tasks_When_get_all_tasks_Then_return_all_tasks() {
         List<TaskDTO> tasksDTO = new ArrayList<>();
         List<Task> tasks = new ArrayList<>();
 
@@ -60,7 +61,7 @@ class TaskLogicTest {
         tasksDTO.add(taskDTO2);
         taskLogic.addTask(tasksDTO);
 
-        for (TaskDTO taskDTO: tasksDTO){
+        for (TaskDTO taskDTO : tasksDTO) {
             Task task = new Task();
             task.setName(taskDTO.getName());
             task.setDescription(taskDTO.getDescription());
@@ -73,6 +74,6 @@ class TaskLogicTest {
 
         List<Task> tasksReturned = taskLogic.getAllTasks();
         Mockito.verify(taskRepository).findAll();
-        assertEquals("Lists size Test",tasksDTO.size(),tasksReturned.size());
+        assertEquals("Lists size Test", tasksDTO.size(), tasksReturned.size());
     }
 }
