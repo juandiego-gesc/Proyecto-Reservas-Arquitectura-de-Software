@@ -27,8 +27,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ActiveProfiles(profiles = "test")
 @ExtendWith(MockitoExtension.class)
@@ -149,15 +148,6 @@ class AppointmentLogicTest {
 
     @Test
     void update_appointment_Given_an_appointmentDTO_When_updateAppointment_is_called_but_are_another_appointment_Then_appointment_should_return_exception() {
-        Appointment appointment = new Appointment();
-        appointment.setAppointmentId(1L);
-        EmployeeDTO employeeDTO = new EmployeeDTO("Employee Name", 1L, 1L);
-        Employee employee = employeeLogic.addEmployee(employeeDTO);
-        employee.setEmployeeId(1L);
-
-        ArrayList<Employee> availableEmployees = new ArrayList<>();
-        availableEmployees.add(employee);
-        when(appointmentRepository.save(any())).thenReturn(appointment);
         AppointmentDTO appointmentDTO = new AppointmentDTO("2021-05-05",
                 "08:00:00",
                 "09:00:00",
@@ -165,14 +155,10 @@ class AppointmentLogicTest {
                 1L,
                 1L,
                 1L);
-
-        when(appointmentLogic.getAvailabilityByTimeAndTask(appointmentDTO.getTaskId(), appointmentDTO.getStartTime(), appointmentDTO.getEndTime(), appointmentDTO.getDate())).thenReturn(availableEmployees);
-        appointmentLogic.createAppointment(appointmentDTO);
-        ArrayList<Employee> availableEmployeesUpdated = new ArrayList<>();
-        when(appointmentLogic.getAvailabilityByTimeAndTask(appointmentDTO.getTaskId(), appointmentDTO.getStartTime(), appointmentDTO.getEndTime(), appointmentDTO.getDate())).thenReturn(availableEmployeesUpdated);
-        appointmentDTO.setStartTime("10:00:00");
-        appointmentDTO.setEndTime("11:00:00");
-        Assertions.assertThrows(CanNotUpdateAppointmentException.class, () -> appointmentLogic.updateAppointment(appointmentDTO));
+        List<Employee> availability = new ArrayList<>();
+        when(employeeRepository.findAllById(any())).thenReturn(availability);
+        when(appointmentRepository.findAvailableEmployees(any(), any(), any(), any())).thenReturn(new ArrayList<>());
+        assertThrows(CanNotUpdateAppointmentException.class, () -> appointmentLogic.updateAppointment(appointmentDTO));
     }
 
     @Test

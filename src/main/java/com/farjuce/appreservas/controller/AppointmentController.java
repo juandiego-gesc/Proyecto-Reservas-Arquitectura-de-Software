@@ -23,6 +23,8 @@ public class AppointmentController {
         this.logic = logicAppointment;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+
     @PostMapping(path = "/app/appointment/create")
     public String createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         try {
@@ -35,11 +37,15 @@ public class AppointmentController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(path = "/app/getMyAppointment/{id}")
     public List<Appointment> getMyAppointment(@PathVariable Long id) {
         LOGGER.info("Getting appointments for customer with id: {}", id);
         return logic.getMyAppointments(id);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
 
     @GetMapping(path = "/app/appointments/getAll")
     public List<Appointment> getAllAppointments() {
@@ -47,12 +53,16 @@ public class AppointmentController {
         return logic.getAllAppointments();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(path = "/app/appointments/getAvailable")
     public List<Employee> getAvailableAppointments(@RequestParam Long taskId, @RequestParam String startTime,
                                                    @RequestParam String endTime, @RequestParam String date) {
         LOGGER.info("Getting available appointments for task with id: {}, start time: {}, end time: {}, and date: {}", taskId, startTime, endTime, date);
         return logic.getAvailabilityByTimeAndTask(taskId, startTime, endTime, date);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
 
     @PutMapping(path = "/app/appointment/update")
     public String updateAppointment(@RequestBody AppointmentDTO appointmentDTO) {
@@ -67,6 +77,8 @@ public class AppointmentController {
             return ("The Appointment can't be updated: " + e.getMessage());
         }
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
 
     @DeleteMapping(path = "/app/appointment/delete/{id}")
     public String deleteAppointment(@PathVariable Long id) {
